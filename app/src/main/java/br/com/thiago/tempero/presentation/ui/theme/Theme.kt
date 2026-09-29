@@ -1,4 +1,4 @@
-package br.com.thiago.tempero.ui.theme
+package br.com.thiago.tempero.presentation.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
