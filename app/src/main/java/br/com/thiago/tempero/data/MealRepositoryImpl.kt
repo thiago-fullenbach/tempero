@@ -2,7 +2,7 @@ package br.com.thiago.tempero.data
 
 import br.com.thiago.tempero.data.remote.MealRemoteDataSource
 import br.com.thiago.tempero.data.remote.mapper.toDomain
-import br.com.thiago.tempero.domain.error.AppError
+import br.com.thiago.tempero.domain.error.DataError
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.domain.repository.MealRepository
@@ -27,14 +27,14 @@ class MealRepositoryImpl(
         } catch (e: CancellationException) {
             throw e
         } catch (e: JsonDataException) {
-            throw AppError.InvalidData(e)
+            throw DataError.InvalidResponse(e)
         } catch (e: JsonEncodingException) {
-            throw AppError.InvalidData(e)
+            throw DataError.InvalidResponse(e)
         } catch (e: IOException) {
-            throw AppError.NoConnection(e)
+            throw DataError.Network(e)
         } catch (e: HttpException) {
-            throw AppError.Server(e.code())
+            throw DataError.Unavailable(e)
         } catch (e: Exception) {
-            throw AppError.Unknown(e)
+            throw DataError.Unknown(e)
         }
 }
