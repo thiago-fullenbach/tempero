@@ -4,7 +4,7 @@ data class Meal(
     val id: Long,
     val name: String,
     val altName: String?,
-    val category: String,
+    val category: MealCategory,
     val area: String,
     val country: String,
     val steps: List<MealStep>,
@@ -17,6 +17,9 @@ data class Meal(
     val creativeCommonsConfirmed: String?,
     val dateModified: String?
 )
+
+@JvmInline
+value class MealCategory(val category: String)
 
 @JvmInline
 value class MealStep(val step: String)
