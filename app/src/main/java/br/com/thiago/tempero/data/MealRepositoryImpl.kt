@@ -8,11 +8,12 @@ import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.domain.repository.MealRepository
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonEncodingException
+import jakarta.inject.Inject
 import retrofit2.HttpException
 import java.io.IOException
 import kotlin.coroutines.cancellation.CancellationException
 
-class MealRepositoryImpl(
+class MealRepositoryImpl @Inject constructor(
     private val remoteDataSource: MealRemoteDataSource
 ): MealRepository {
     override suspend fun searchMealsByFirstLetter(firstLetter: Char): List<Meal> =

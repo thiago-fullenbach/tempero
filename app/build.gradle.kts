@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 val localProps = Properties().apply {
@@ -70,6 +71,8 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.moshi)
     ksp(libs.moshi.kotlin.codegen)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
