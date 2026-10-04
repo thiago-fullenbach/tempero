@@ -1,4 +1,4 @@
-package br.com.thiago.tempero.presentation.ui.theme
+package br.com.thiago.tempero.presentation.constants
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
