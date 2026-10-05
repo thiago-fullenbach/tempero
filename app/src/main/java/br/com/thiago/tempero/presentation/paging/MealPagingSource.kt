@@ -2,11 +2,11 @@ package br.com.thiago.tempero.presentation.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.thiago.tempero.data.MealRepositoryImpl
 import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.domain.repository.MealRepository
 
 class MealPagingSource(
-    private val repository: MealRepositoryImpl
+    private val repository: MealRepository
 ): PagingSource<Int, Meal>() {
     private val letters = ('a'..'z').map { it }
 
