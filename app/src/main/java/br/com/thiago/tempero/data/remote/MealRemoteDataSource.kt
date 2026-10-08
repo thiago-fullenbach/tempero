@@ -6,7 +6,7 @@ import br.com.thiago.tempero.data.remote.dto.MealDto
 import jakarta.inject.Inject
 
 interface MealRemoteDataSource {
-    suspend fun searchMealsByFirstLetter(firstLetter: Char): List<MealDto>
+    suspend fun searchMealsByCategory(category: String): List<MealDto>
 
     suspend fun listCategories(): List<CategoryDto>
 }
@@ -14,8 +14,8 @@ interface MealRemoteDataSource {
 class MealRemoteDataSourceImpl @Inject constructor(
     private val api: TheMealDBAPI
 ): MealRemoteDataSource {
-    override suspend fun searchMealsByFirstLetter(firstLetter: Char): List<MealDto> =
-        api.searchByFirstLetter(firstLetter).meals.orEmpty()
+    override suspend fun searchMealsByCategory(category: String): List<MealDto> =
+        api.searchByCategory(category).meals.orEmpty()
 
     override suspend fun listCategories(): List<CategoryDto> =
         api.listCategories().categories.orEmpty()

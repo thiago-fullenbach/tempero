@@ -7,8 +7,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface TheMealDBAPI {
-    @GET("search.php")
-    suspend fun searchByFirstLetter(@Query("f") letter: Char): MealsResponseDto
+    @GET("filter.php")
+    suspend fun searchByCategory(@Query("c") category: String?): MealsResponseDto
 
     @GET("categories.php")
     suspend fun listCategories(): CategoriesResponseDto

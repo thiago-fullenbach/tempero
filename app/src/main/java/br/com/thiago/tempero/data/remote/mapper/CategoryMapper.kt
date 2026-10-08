@@ -9,7 +9,7 @@ fun CategoryNameDto.toDomain(): MealCategory = MealCategory(strCategory.trim())
 fun CategoryDto.toDomain(): MealCategory = MealCategory(strCategory.trim())
 
 @JvmName("categoryNamesToDomain")
-fun List<CategoryNameDto>.toDomain(): List<MealCategory> = map { it.toDomain() }
+fun List<CategoryNameDto>.toDomain(): List<MealCategory> = mapNotNull { it.toDomain() }
 
 @JvmName("categoriesToDomain")
-fun List<CategoryDto>.toDomain(): List<MealCategory> = map { it.toDomain() }
+fun List<CategoryDto>.toDomain(): List<MealCategory> = mapNotNull { it.toDomain() }

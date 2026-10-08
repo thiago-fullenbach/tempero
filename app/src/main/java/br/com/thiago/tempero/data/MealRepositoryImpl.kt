@@ -9,15 +9,30 @@ import br.com.thiago.tempero.domain.repository.MealRepository
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonEncodingException
 import jakarta.inject.Inject
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import retrofit2.HttpException
 import java.io.IOException
 import kotlin.coroutines.cancellation.CancellationException
 
 class MealRepositoryImpl @Inject constructor(
     private val remoteDataSource: MealRemoteDataSource
-): MealRepository {
-    override suspend fun searchMealsByFirstLetter(firstLetter: Char): List<Meal> =
-        safeApiCall { remoteDataSource.searchMealsByFirstLetter(firstLetter).toDomain() }
+) : MealRepository {
+    override suspend fun getAllMeals(categories: List<MealCategory>): List<Meal> =
+        safeApiCall {
+            coroutineScope {
+                categories
+                    .map { cat ->
+                        async {
+                            remoteDataSource.searchMealsByCategory(cat.category).toDomain(cat)
+                        }
+                    }
+                    .awaitAll()
+                    .flatten()
+                    .sortedBy { it.name }
+            }
+        }
 
     override suspend fun listCategories(): List<MealCategory> =
         safeApiCall { remoteDataSource.listCategories().toDomain() }

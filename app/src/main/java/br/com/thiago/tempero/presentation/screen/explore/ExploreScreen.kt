@@ -45,6 +45,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import br.com.thiago.tempero.R
+import br.com.thiago.tempero.domain.error.DataError
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.presentation.components.StateMessage
@@ -74,6 +75,7 @@ fun ExploreScreen(
     onCategorySelected: (MealCategory?) -> Unit,
     onSearchClick: () -> Unit,
     onMealClick: (Meal) -> Unit,
+    onRetry: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surface) {
@@ -99,52 +101,71 @@ fun ExploreScreen(
                     onClick = onSearchClick,
                     modifier = Modifier.padding(start = Spacing.lg, end = Spacing.lg, top = Spacing.sm)
                 )
-                CategoryChips(
-                    categories = uiState.categories,
-                    selected = uiState.selectedCategory,
-                    onCategorySelected = onCategorySelected,
-                    modifier = Modifier.padding(vertical = Spacing.lg)
-                )
 
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    state = gridState,
-                    contentPadding = PaddingValues(start = Spacing.lg, end = Spacing.lg, bottom = Spacing.xl),
-                    horizontalArrangement = Arrangement.spacedBy(Spacing.md),
-                    verticalArrangement = Arrangement.spacedBy(Spacing.md)
-                ) {
-                    when {
-                        isRefreshing -> item(span = FullWidth) { LoadingIndicator() }
-                        hasRefreshError -> item(span = FullWidth) {
-                            StateMessage(
-                                icon = Icons.Default.Warning,
-                                title = stringResource(R.string.explore_error_title),
-                                message = stringResource(R.string.explore_error_message),
-                                iconColor = MaterialTheme.colorScheme.error,
-                                iconBackground = MaterialTheme.colorScheme.errorContainer,
-                                actionLabel = stringResource(R.string.explore_retry),
-                                onActionClick = meals::retry
-                            )
-                        }
-                        refreshState is LoadState.NotLoading && meals.itemCount == 0 -> item(span = FullWidth) {
-                            StateMessage(
-                                icon = Icons.Default.Search,
-                                title = stringResource(R.string.explore_empty_title),
-                                message = stringResource(R.string.explore_empty_message),
-                                iconColor = MaterialTheme.colorScheme.primary,
-                                iconBackground = MaterialTheme.colorScheme.surfaceContainerHigh
-                            )
-                        }
-                        else -> {
-                            items(
-                                count = meals.itemCount,
-                                key = meals.itemKey { it.id }
-                            ) { index ->
-                                meals[index]?.let { meal ->
-                                    MealCard(meal = meal, onClick = { onMealClick(meal) })
+                when (uiState) {
+                    // Categorias ainda carregando: nada além do cabeçalho e da busca.
+                    ExploreUiState.Loading -> LoadingIndicator(modifier = Modifier.fillMaxWidth())
+
+                    // Falha ao carregar as categorias: não há filtro nem lista para mostrar.
+                    is ExploreUiState.Error -> StateMessage(
+                        icon = Icons.Default.Warning,
+                        title = stringResource(R.string.explore_error_title),
+                        message = stringResource(R.string.explore_error_message),
+                        iconColor = MaterialTheme.colorScheme.error,
+                        iconBackground = MaterialTheme.colorScheme.errorContainer,
+                        actionLabel = stringResource(R.string.explore_retry),
+                        onActionClick = onRetry
+                    )
+
+                    is ExploreUiState.Success -> {
+                        CategoryChips(
+                            categories = uiState.categories,
+                            selected = uiState.selected,
+                            onCategorySelected = onCategorySelected,
+                            modifier = Modifier.padding(vertical = Spacing.lg)
+                        )
+
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(2),
+                            state = gridState,
+                            contentPadding = PaddingValues(start = Spacing.lg, end = Spacing.lg, bottom = Spacing.xl),
+                            horizontalArrangement = Arrangement.spacedBy(Spacing.md),
+                            verticalArrangement = Arrangement.spacedBy(Spacing.md)
+                        ) {
+                            when {
+                                isRefreshing -> item(span = FullWidth) { LoadingIndicator() }
+                                hasRefreshError -> item(span = FullWidth) {
+                                    StateMessage(
+                                        icon = Icons.Default.Warning,
+                                        title = stringResource(R.string.explore_error_title),
+                                        message = stringResource(R.string.explore_error_message),
+                                        iconColor = MaterialTheme.colorScheme.error,
+                                        iconBackground = MaterialTheme.colorScheme.errorContainer,
+                                        actionLabel = stringResource(R.string.explore_retry),
+                                        onActionClick = meals::retry
+                                    )
+                                }
+                                refreshState is LoadState.NotLoading && meals.itemCount == 0 -> item(span = FullWidth) {
+                                    StateMessage(
+                                        icon = Icons.Default.Search,
+                                        title = stringResource(R.string.explore_empty_title),
+                                        message = stringResource(R.string.explore_empty_message),
+                                        iconColor = MaterialTheme.colorScheme.primary,
+                                        iconBackground = MaterialTheme.colorScheme.surfaceContainerHigh
+                                    )
+                                }
+                                else -> {
+                                    items(
+                                        count = meals.itemCount,
+                                        key = meals.itemKey { it.id }
+                                    ) { index ->
+                                        meals[index]?.let { meal ->
+                                            MealCard(meal = meal, onClick = { onMealClick(meal) })
+                                        }
+                                    }
+                                    item(span = FullWidth) { AppendFooter(meals.loadState.append, onRetry = meals::retry) }
                                 }
                             }
-                            item(span = FullWidth) { AppendFooter(meals.loadState.append, onRetry = meals::retry) }
                         }
                     }
                 }
@@ -208,12 +229,41 @@ private fun ExploreScreenPreview() {
     TemperoTheme {
         ExploreScreen(
             meals = flowOf(PagingData.from(PreviewData.meals)).collectAsLazyPagingItems(),
-            uiState = ExploreUiState(
-                categories = PreviewData.categories
-            ),
+            uiState = ExploreUiState.Success(categories = PreviewData.categories),
             onCategorySelected = {},
             onSearchClick = {},
-            onMealClick = {}
+            onMealClick = {},
+            onRetry = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ExploreScreenLoadingPreview() {
+    TemperoTheme {
+        ExploreScreen(
+            meals = flowOf(PagingData.empty<Meal>()).collectAsLazyPagingItems(),
+            uiState = ExploreUiState.Loading,
+            onCategorySelected = {},
+            onSearchClick = {},
+            onMealClick = {},
+            onRetry = {}
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ExploreScreenErrorPreview() {
+    TemperoTheme {
+        ExploreScreen(
+            meals = flowOf(PagingData.empty<Meal>()).collectAsLazyPagingItems(),
+            uiState = ExploreUiState.Error(DataError.Unknown(Exception())),
+            onCategorySelected = {},
+            onSearchClick = {},
+            onMealClick = {},
+            onRetry = {}
         )
     }
 }

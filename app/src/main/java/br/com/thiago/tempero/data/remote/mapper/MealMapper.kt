@@ -6,13 +6,13 @@ import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.domain.model.MealIngredient
 import br.com.thiago.tempero.domain.model.MealStep
 
-fun MealDto.toDomain(): Meal? {
+fun MealDto.toDomain(category: MealCategory): Meal? {
     val id = idMeal.toLongOrNull() ?: return null
     return Meal(
         id = id,
         name = strMeal,
         altName = strMealAlternate.cleanOrNull(),
-        category = MealCategory(strCategory.orEmpty()),
+        category = strCategory?.let { MealCategory(strCategory) } ?: category,
         area = strArea.orEmpty(),
         country = strCountry.orEmpty(),
         steps = strInstructions.toSteps(),
@@ -30,7 +30,7 @@ fun MealDto.toDomain(): Meal? {
     )
 }
 
-fun List<MealDto>.toDomain(): List<Meal> = mapNotNull { it.toDomain() }
+fun List<MealDto>.toDomain(category: MealCategory): List<Meal> = mapNotNull { it.toDomain(category) }
 
 private fun MealDto.toIngredients(): List<MealIngredient> =
     rawIngredients.zip(rawMeasures).mapNotNull { (ingredient, measure) ->

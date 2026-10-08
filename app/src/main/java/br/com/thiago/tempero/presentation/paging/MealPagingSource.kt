@@ -3,28 +3,25 @@ package br.com.thiago.tempero.presentation.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.repository.MealRepository
+import br.com.thiago.tempero.domain.model.MealCategory
 
 class MealPagingSource(
-    private val repository: MealRepository
-): PagingSource<Int, Meal>() {
-    private val letters = ('a'..'z').map { it }
+    private val selectedCategory: MealCategory? = null,
+    meals: List<Meal>,
+) : PagingSource<Int, Meal>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Meal>): Int? =
-        state.anchorPosition?.let { state.closestPageToPosition(it) }?.let {
-            it.prevKey?.plus(1) ?: it.nextKey?.minus(1)
-        }
+    private val items =
+        if (selectedCategory == null) meals else meals.filter { it.category == selectedCategory }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Meal> = try {
-        val index = params.key ?: 0
-        val meals = repository.searchMealsByFirstLetter(letters[index])
+    override fun getRefreshKey(state: PagingState<Int, Meal>): Int? = null
 
-        LoadResult.Page(
-            data = meals,
-            prevKey = if(index == 0) null else index - 1,
-            nextKey = if(index == letters.lastIndex) null else index + 1
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Meal> {
+        val start = params.key ?: 0
+        val end = minOf(start + params.loadSize, items.size)
+        return LoadResult.Page(
+            data = if (start < end) items.subList(start, end) else emptyList(),
+            prevKey = null,
+            nextKey = if (end < items.size) end else null
         )
-    } catch (e: Exception) {
-        LoadResult.Error(e)
     }
 }

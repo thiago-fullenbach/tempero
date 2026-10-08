@@ -51,7 +51,7 @@ fun MealCard(
                 overflow = TextOverflow.Ellipsis
             )
             Text(
-                text = "${meal.category.category} · ${meal.area}",
+                text = "${meal.category.category} · ${meal.country}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
