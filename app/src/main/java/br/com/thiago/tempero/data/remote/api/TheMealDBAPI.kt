@@ -14,4 +14,4 @@ interface TheMealDBAPI {
     suspend fun listCategories(): CategoriesResponseDto
 }
 
-const val THE_MEAL_DB_API_BASE_URL = "https://www.themealdb.com/api/json/v1/${BuildConfig.MEALDB_API_KEY}"
+const val THE_MEAL_DB_API_BASE_URL = "https://www.themealdb.com/api/json/v1/${BuildConfig.MEALDB_API_KEY}/"

@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Tempero</string>
+    <string name="explore_title">Tempero</string>
+    <string name="explore_subtitle">What are we cooking today?</string>
+    <string name="explore_search_placeholder">Search recipes</string>
+    <string name="explore_category_all">All</string>
+    <string name="explore_loading">Loading recipes…</string>
+    <string name="explore_error_title">No connection</string>
+    <string name="explore_error_message">We couldn\'t load the recipes. Check your internet connection and try again.</string>
+    <string name="explore_retry">Try again</string>
+    <string name="explore_empty_title">Nothing found</string>
+    <string name="explore_empty_message">No recipes available right now.</string>
+    <string name="explore_scroll_to_top">Back to top</string>
 </resources>
