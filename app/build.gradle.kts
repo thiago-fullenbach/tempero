@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.androidx.paging.compose)
     implementation(libs.coil.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
