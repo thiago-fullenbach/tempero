@@ -18,23 +18,30 @@ object PreviewData {
         Triple("Apple Frangipan Tart", "Dessert", "British"),
         Triple("Ayam Percik", "Chicken", "Malaysian"),
         Triple("Apam Balik", "Dessert", "Malaysian")
-    ).mapIndexed { index, (name, category, area) ->
-        Meal(
-            id = index.toLong(),
-            name = name,
-            altName = null,
-            category = MealCategory(category),
-            area = area,
-            country = area,
-            steps = emptyList(),
-            imageUrl = "",
-            videoUrl = null,
-            tags = emptyList(),
-            ingredients = emptyList(),
-            source = null,
-            imageSrc = null,
-            creativeCommonsConfirmed = null,
-            dateModified = null
-        )
-    }
+    ).mapIndexed { index, (name, category, area) -> previewMeal(index.toLong(), name, category, area) }
+
+    val searchResults: List<Meal> = listOf(
+        Triple("Chicken Handi", "Chicken", "Indian"),
+        Triple("Chicken Alfredo Primavera", "Chicken", "Italian"),
+        Triple("Chicken Congee", "Chicken", "Chinese"),
+        Triple("Ayam Percik", "Chicken", "Malaysian")
+    ).mapIndexed { index, (name, category, area) -> previewMeal(index.toLong(), name, category, area) }
+
+    private fun previewMeal(id: Long, name: String, category: String, area: String) = Meal(
+        id = id,
+        name = name,
+        altName = null,
+        category = MealCategory(category),
+        area = area,
+        country = area,
+        steps = emptyList(),
+        imageUrl = "",
+        videoUrl = null,
+        tags = emptyList(),
+        ingredients = emptyList(),
+        source = null,
+        imageSrc = null,
+        creativeCommonsConfirmed = null,
+        dateModified = null
+    )
 }
