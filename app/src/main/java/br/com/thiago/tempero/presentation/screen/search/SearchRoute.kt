@@ -1,34 +1,35 @@
 package br.com.thiago.tempero.presentation.screen.search
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import br.com.thiago.tempero.presentation.viewmodel.SearchViewModel
 
 /**
- * Ponto de entrada da tela Busca. Por enquanto só guarda a query localmente e o estado
- * fica sempre [SearchUiState.Idle]; o ViewModel e a busca na API virão depois.
+ * Ponto de entrada da tela Busca: obtém o [SearchViewModel], coleta query e estado e
+ * traduz os callbacks de [SearchScreen] em [SearchIntent] ou [SearchEvent].
  */
 @Composable
 fun SearchRoute(
     onEvent: (SearchEvent) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: SearchViewModel = hiltViewModel()
 ) {
-    var query by rememberSaveable { mutableStateOf("") }
+    val query = viewModel.query.collectAsStateWithLifecycle()
+    val uiState = viewModel.uiState.collectAsStateWithLifecycle()
 
     SearchScreen(
-        query = query,
-        uiState = SearchUiState.Idle,
-        onQueryChange = { query = it },
+        query = query.value,
+        uiState = uiState.value,
+        onQueryChange = { viewModel.onHandleIntent(SearchIntent.QueryChanged(it)) },
         onBackClick = { onEvent(SearchEvent.Dismissed) },
-        onClearClick = { query = "" },
+        onClearClick = { viewModel.onHandleIntent(SearchIntent.Clear) },
         onMealClick = { onEvent(SearchEvent.MealSelected(it)) },
         onExploreCategoriesClick = { onEvent(SearchEvent.ExploreCategoriesRequested) },
-        onRetry = {},
-        onSuggestionClick = { query = it },
-        onSuggestionFillClick = { query = it },
+        onRetry = { viewModel.onHandleIntent(SearchIntent.Retry) },
+        onSuggestionClick = { viewModel.onHandleIntent(SearchIntent.SuggestionSelected(it)) },
+        onSuggestionFillClick = { viewModel.onHandleIntent(SearchIntent.QueryChanged(it)) },
         modifier = modifier
     )
 }

@@ -6,5 +6,7 @@ import br.com.thiago.tempero.domain.model.MealCategory
 interface MealRepository {
     suspend fun getAllMeals(categories: List<MealCategory>): List<Meal>
 
+    suspend fun searchMeals(query: String): List<Meal>
+
     suspend fun listCategories(): List<MealCategory>
 }

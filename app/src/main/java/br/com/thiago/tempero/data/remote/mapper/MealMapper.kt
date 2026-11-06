@@ -6,13 +6,18 @@ import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.domain.model.MealIngredient
 import br.com.thiago.tempero.domain.model.MealStep
 
-fun MealDto.toDomain(category: MealCategory): Meal? {
+/**
+ * Converte o DTO em [Meal]. A categoria vem de `strCategory`; se ausente (ex.: `filter.php`),
+ * usa [fallbackCategory]. Sem nenhuma das duas, a receita é descartada.
+ */
+fun MealDto.toDomain(fallbackCategory: MealCategory? = null): Meal? {
     val id = idMeal.toLongOrNull() ?: return null
+    val category = strCategory?.let { MealCategory(it) } ?: fallbackCategory ?: return null
     return Meal(
         id = id,
         name = strMeal,
         altName = strMealAlternate.cleanOrNull(),
-        category = strCategory?.let { MealCategory(strCategory) } ?: category,
+        category = category,
         area = strArea.orEmpty(),
         country = strCountry.orEmpty(),
         steps = strInstructions.toSteps(),
@@ -30,7 +35,8 @@ fun MealDto.toDomain(category: MealCategory): Meal? {
     )
 }
 
-fun List<MealDto>.toDomain(category: MealCategory): List<Meal> = mapNotNull { it.toDomain(category) }
+fun List<MealDto>.toDomain(fallbackCategory: MealCategory? = null): List<Meal> =
+    mapNotNull { it.toDomain(fallbackCategory) }
 
 private fun MealDto.toIngredients(): List<MealIngredient> =
     rawIngredients.zip(rawMeasures).mapNotNull { (ingredient, measure) ->

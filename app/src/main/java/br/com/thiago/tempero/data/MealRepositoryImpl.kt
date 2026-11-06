@@ -48,6 +48,13 @@ class MealRepositoryImpl @Inject constructor(
             }
         }
 
+    override suspend fun searchMeals(query: String): List<Meal> =
+        safeApiCall {
+            withContext(ioDispatcher) {
+                remoteDataSource.searchMealsByName(query.trim()).toDomain()
+            }
+        }
+
     override suspend fun listCategories(): List<MealCategory> =
         safeApiCall {
             withContext(ioDispatcher) {
