@@ -27,6 +27,7 @@ fun ExploreRoute(
         onSearchClick = { onEvent(ExploreEvent.SearchRequested) },
         onMealClick = { onEvent(ExploreEvent.MealSelected(it)) },
         onRetry = { viewModel.onHandleIntent(ExploreIntent.Retry) },
+        onFavoritesClick = { onEvent(ExploreEvent.FavoritesRequested) },
         modifier = modifier
     )
 }

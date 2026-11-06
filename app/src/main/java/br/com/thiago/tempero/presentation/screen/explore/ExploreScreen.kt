@@ -76,6 +76,7 @@ fun ExploreScreen(
     onSearchClick: () -> Unit,
     onMealClick: (Meal) -> Unit,
     onRetry: () -> Unit,
+    onFavoritesClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Surface(modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.surface) {
@@ -114,7 +115,9 @@ fun ExploreScreen(
                         iconColor = MaterialTheme.colorScheme.error,
                         iconBackground = MaterialTheme.colorScheme.errorContainer,
                         actionLabel = stringResource(R.string.explore_retry),
-                        onActionClick = onRetry
+                        onActionClick = onRetry,
+                        secondaryActionLabel = stringResource(R.string.explore_see_favorites),
+                        onSecondaryActionClick = onFavoritesClick
                     )
 
                     is ExploreUiState.Success -> {
@@ -142,7 +145,9 @@ fun ExploreScreen(
                                         iconColor = MaterialTheme.colorScheme.error,
                                         iconBackground = MaterialTheme.colorScheme.errorContainer,
                                         actionLabel = stringResource(R.string.explore_retry),
-                                        onActionClick = meals::retry
+                                        onActionClick = meals::retry,
+                                        secondaryActionLabel = stringResource(R.string.explore_see_favorites),
+                                        onSecondaryActionClick = onFavoritesClick
                                     )
                                 }
                                 refreshState is LoadState.NotLoading && meals.itemCount == 0 -> item(span = FullWidth) {
@@ -233,7 +238,8 @@ private fun ExploreScreenPreview() {
             onCategorySelected = {},
             onSearchClick = {},
             onMealClick = {},
-            onRetry = {}
+            onRetry = {},
+            onFavoritesClick = {}
         )
     }
 }
@@ -248,7 +254,8 @@ private fun ExploreScreenLoadingPreview() {
             onCategorySelected = {},
             onSearchClick = {},
             onMealClick = {},
-            onRetry = {}
+            onRetry = {},
+            onFavoritesClick = {}
         )
     }
 }
@@ -263,7 +270,8 @@ private fun ExploreScreenErrorPreview() {
             onCategorySelected = {},
             onSearchClick = {},
             onMealClick = {},
-            onRetry = {}
+            onRetry = {},
+            onFavoritesClick = {}
         )
     }
 }

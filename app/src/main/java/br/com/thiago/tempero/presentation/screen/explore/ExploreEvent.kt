@@ -8,5 +8,6 @@ import br.com.thiago.tempero.domain.model.Meal
  */
 sealed interface ExploreEvent {
     data object SearchRequested : ExploreEvent
+    data object FavoritesRequested : ExploreEvent
     data class MealSelected(val meal: Meal) : ExploreEvent
 }

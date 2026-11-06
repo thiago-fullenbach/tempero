@@ -9,4 +9,7 @@ sealed interface TemperoDestination {
 
     @Serializable
     data object Search : TemperoDestination
+
+    @Serializable
+    data object Favorites : TemperoDestination
 }
