@@ -13,6 +13,7 @@ import br.com.thiago.tempero.presentation.viewmodel.ExploreViewModel
  */
 @Composable
 fun ExploreRoute(
+    onEvent: (ExploreEvent) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: ExploreViewModel = hiltViewModel()
 ) {
@@ -23,8 +24,8 @@ fun ExploreRoute(
         meals = meals,
         uiState = uiState.value,
         onCategorySelected = { viewModel.onHandleIntent(ExploreIntent.SelectCategory(it)) },
-        onSearchClick = {}, // TODO
-        onMealClick = {}, // TODO
+        onSearchClick = { onEvent(ExploreEvent.SearchRequested) },
+        onMealClick = { onEvent(ExploreEvent.MealSelected(it)) },
         onRetry = { viewModel.onHandleIntent(ExploreIntent.Retry) },
         modifier = modifier
     )
