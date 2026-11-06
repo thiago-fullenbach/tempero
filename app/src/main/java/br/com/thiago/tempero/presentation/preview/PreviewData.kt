@@ -27,6 +27,12 @@ object PreviewData {
         Triple("Ayam Percik", "Chicken", "Malaysian")
     ).mapIndexed { index, (name, category, area) -> previewMeal(index.toLong(), name, category, area) }
 
+    val favorites: List<Meal> = listOf(
+        Triple("Spicy Arrabiata Penne", "Vegetarian", "Italian"),
+        Triple("Chicken Handi", "Chicken", "Indian"),
+        Triple("Lamb Biryani", "Lamb", "Indian")
+    ).mapIndexed { index, (name, category, area) -> previewMeal(index.toLong(), name, category, area) }
+
     private fun previewMeal(id: Long, name: String, category: String, area: String) = Meal(
         id = id,
         name = name,

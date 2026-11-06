@@ -18,6 +18,7 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,7 +44,9 @@ fun StateMessage(
     modifier: Modifier = Modifier,
     actionLabel: String? = null,
     onActionClick: (() -> Unit)? = null,
-    tonalAction: Boolean = false
+    tonalAction: Boolean = false,
+    secondaryActionLabel: String? = null,
+    onSecondaryActionClick: (() -> Unit)? = null
 ) {
     Column(
         modifier = modifier
@@ -83,6 +86,9 @@ fun StateMessage(
             } else {
                 Button(onClick = onActionClick) { Text(actionLabel) }
             }
+        }
+        if (secondaryActionLabel != null && onSecondaryActionClick != null) {
+            TextButton(onClick = onSecondaryActionClick) { Text(secondaryActionLabel) }
         }
     }
 }
