@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,7 +42,8 @@ fun StateMessage(
     iconBackground: Color,
     modifier: Modifier = Modifier,
     actionLabel: String? = null,
-    onActionClick: (() -> Unit)? = null
+    onActionClick: (() -> Unit)? = null,
+    tonalAction: Boolean = false
 ) {
     Column(
         modifier = modifier
@@ -76,8 +78,10 @@ fun StateMessage(
         )
         if (actionLabel != null && onActionClick != null) {
             Spacer(Modifier.height(Spacing.sm))
-            Button(onClick = onActionClick) {
-                Text(actionLabel)
+            if (tonalAction) {
+                FilledTonalButton(onClick = onActionClick) { Text(actionLabel) }
+            } else {
+                Button(onClick = onActionClick) { Text(actionLabel) }
             }
         }
     }

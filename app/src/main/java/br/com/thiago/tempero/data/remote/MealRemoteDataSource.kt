@@ -8,6 +8,8 @@ import jakarta.inject.Inject
 interface MealRemoteDataSource {
     suspend fun searchMealsByCategory(category: String): List<MealDto>
 
+    suspend fun searchMealsByName(name: String): List<MealDto>
+
     suspend fun listCategories(): List<CategoryDto>
 }
 
@@ -16,6 +18,9 @@ class MealRemoteDataSourceImpl @Inject constructor(
 ): MealRemoteDataSource {
     override suspend fun searchMealsByCategory(category: String): List<MealDto> =
         api.searchByCategory(category).meals.orEmpty()
+
+    override suspend fun searchMealsByName(name: String): List<MealDto> =
+        api.searchByName(name).meals.orEmpty()
 
     override suspend fun listCategories(): List<CategoryDto> =
         api.listCategories().categories.orEmpty()

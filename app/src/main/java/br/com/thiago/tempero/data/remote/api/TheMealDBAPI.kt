@@ -10,6 +10,9 @@ interface TheMealDBAPI {
     @GET("filter.php")
     suspend fun searchByCategory(@Query("c") category: String?): MealsResponseDto
 
+    @GET("search.php")
+    suspend fun searchByName(@Query("s") name: String): MealsResponseDto
+
     @GET("categories.php")
     suspend fun listCategories(): CategoriesResponseDto
 }
