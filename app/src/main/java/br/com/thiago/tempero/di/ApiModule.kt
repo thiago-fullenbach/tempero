@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -21,7 +22,7 @@ object ApiModule {
     fun provideOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(
-                HttpLoggingInterceptor().apply {
+                HttpLoggingInterceptor { message -> Timber.tag("OkHttp").d(message) }.apply {
                     level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
                 }
             )

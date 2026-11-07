@@ -5,14 +5,23 @@ import br.com.thiago.tempero.data.remote.dto.MealDto
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.domain.model.MealIngredient
+import timber.log.Timber
 
 /**
  * Converte o DTO em [Meal]. A categoria vem de `strCategory`; se ausente (ex.: `filter.php`),
  * usa [fallbackCategory]. Sem nenhuma das duas, a receita é descartada.
  */
 fun MealDto.toDomain(fallbackCategory: MealCategory? = null): Meal? {
-    val id = idMeal.toLongOrNull() ?: return null
-    val category = strCategory?.let { MealCategory(it) } ?: fallbackCategory ?: return null
+    val id = idMeal.toLongOrNull()
+    if (id == null) {
+        Timber.w("Receita descartada: idMeal inválido (%s)", idMeal)
+        return null
+    }
+    val category = strCategory?.let { MealCategory(it) } ?: fallbackCategory
+    if (category == null) {
+        Timber.w("Receita %d descartada: sem categoria", id)
+        return null
+    }
     return Meal(
         id = id,
         name = strMeal,

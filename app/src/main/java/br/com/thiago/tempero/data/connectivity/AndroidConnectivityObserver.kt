@@ -11,6 +11,8 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 
 /** Estado da rede via [ConnectivityManager]: online = internet disponível e validada. */
 class AndroidConnectivityObserver @Inject constructor(
@@ -40,7 +42,9 @@ class AndroidConnectivityObserver @Inject constructor(
         trySend(currentlyOnline())
         manager.registerDefaultNetworkCallback(callback)
         awaitClose { manager.unregisterNetworkCallback(callback) }
-    }.distinctUntilChanged()
+    }
+        .distinctUntilChanged()
+        .onEach { Timber.i("Conectividade: online=%b", it) }
 
     private fun NetworkCapabilities?.hasInternet(): Boolean =
         this != null &&

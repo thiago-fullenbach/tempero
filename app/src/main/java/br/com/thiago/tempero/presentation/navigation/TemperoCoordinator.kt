@@ -1,16 +1,23 @@
 package br.com.thiago.tempero.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.presentation.screen.detail.DetailEvent
 import br.com.thiago.tempero.presentation.screen.explore.ExploreEvent
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesEvent
 import br.com.thiago.tempero.presentation.screen.search.SearchEvent
+import timber.log.Timber
 
 /**
  * Coordinator da navegação: as telas emitem eventos semânticos ([ExploreEvent],
@@ -18,7 +25,10 @@ import br.com.thiago.tempero.presentation.screen.search.SearchEvent
  * e rotas fora das telas.
  */
 @Stable
-class TemperoCoordinator(val navController: NavHostController) {
+class TemperoCoordinator(
+    val navController: NavHostController,
+    private val analytics: AnalyticsTracker
+) {
 
     fun onEvent(event: ExploreEvent) {
         when (event) {
@@ -28,14 +38,14 @@ class TemperoCoordinator(val navController: NavHostController) {
 
             ExploreEvent.FavoritesRequested -> onTabSelected(TopLevelDestination.Favorites)
 
-            is ExploreEvent.MealSelected -> openMeal(event.meal)
+            is ExploreEvent.MealSelected -> openMeal(event.meal, AnalyticsEvent.ORIGIN_EXPLORE)
         }
     }
 
     fun onEvent(event: FavoritesEvent) {
         when (event) {
             FavoritesEvent.ExploreRequested -> onTabSelected(TopLevelDestination.Explore)
-            is FavoritesEvent.MealSelected -> openMeal(event.meal)
+            is FavoritesEvent.MealSelected -> openMeal(event.meal, AnalyticsEvent.ORIGIN_FAVORITES)
         }
     }
 
@@ -48,7 +58,7 @@ class TemperoCoordinator(val navController: NavHostController) {
                 navController.popBackStack(TemperoDestination.Explore, inclusive = false)
             }
 
-            is SearchEvent.MealSelected -> openMeal(event.meal)
+            is SearchEvent.MealSelected -> openMeal(event.meal, AnalyticsEvent.ORIGIN_SEARCH)
         }
     }
 
@@ -74,17 +84,42 @@ class TemperoCoordinator(val navController: NavHostController) {
      * a tela em branco).
      */
     private inline fun runIfResumed(block: () -> Unit) {
-        if (navController.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED) {
+        val state = navController.currentBackStackEntry?.lifecycle?.currentState
+        if (state == Lifecycle.State.RESUMED) {
             block()
+        } else {
+            Timber.d("Navegação ignorada: tela atual não está RESUMED (estado=%s)", state)
         }
     }
 
-    private fun openMeal(meal: Meal) = runIfResumed {
+    /** [origin] é a lista de onde a receita foi aberta; só é registrado se a navegação ocorrer. */
+    private fun openMeal(meal: Meal, origin: String) = runIfResumed {
+        analytics.track(AnalyticsEvent.SelectItem(meal, origin))
         navController.navigate(TemperoDestination.Detail(meal.id)) { launchSingleTop = true }
     }
 }
 
 @Composable
 fun rememberTemperoCoordinator(
+    analytics: AnalyticsTracker,
     navController: NavHostController = rememberNavController()
-): TemperoCoordinator = remember(navController) { TemperoCoordinator(navController) }
+): TemperoCoordinator {
+    DisposableEffect(navController) {
+        val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
+            Timber.d("Destino: %s", destination.route)
+            destination.analyticsScreen()?.let { analytics.track(AnalyticsEvent.ScreenView(it)) }
+        }
+        navController.addOnDestinationChangedListener(listener)
+        onDispose { navController.removeOnDestinationChangedListener(listener) }
+    }
+    return remember(navController) { TemperoCoordinator(navController, analytics) }
+}
+
+/** Nome da tela para o `screen_view`; `null` para destinos desconhecidos. */
+private fun NavDestination.analyticsScreen(): String? = when {
+    hasRoute<TemperoDestination.Explore>() -> AnalyticsEvent.SCREEN_EXPLORE
+    hasRoute<TemperoDestination.Search>() -> AnalyticsEvent.SCREEN_SEARCH
+    hasRoute<TemperoDestination.Favorites>() -> AnalyticsEvent.SCREEN_FAVORITES
+    hasRoute<TemperoDestination.Detail>() -> AnalyticsEvent.SCREEN_DETAIL
+    else -> null
+}
