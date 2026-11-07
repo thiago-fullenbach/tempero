@@ -1,0 +1,117 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>AnnotationOnSeparateLine:DispatcherModule.kt$DefaultDispatcher$@Qualifier @Retention(AnnotationRetention.BINARY) annotation</ID>
+    <ID>AnnotationOnSeparateLine:DispatcherModule.kt$IoDispatcher$@Qualifier @Retention(AnnotationRetention.BINARY) annotation</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(100, (AnalyticsEvent.Search(long, AnalyticsEvent.METHOD_TYPED, 0).params["search_term"] as String).length)</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(100, (AnalyticsEvent.SelectItem(meal(name = long), "explore").params["item_name"] as String).length)</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(long, AnalyticsEvent.METHOD_TYPED, 0)</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(meal(name = long), "explore")</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(name = long)</ID>
+    <ID>ArgumentListWrapping:ExploreScreen.kt$(meals.loadState.append, onRetry = meals::retry)</ID>
+    <ID>ArgumentListWrapping:ExploreScreen.kt$(span = FullWidth)</ID>
+    <ID>ArgumentListWrapping:MealPagingSourceTest.kt$MealPagingSourceTest$(key = null, loadSize = size, placeholdersEnabled = false)</ID>
+    <ID>ArgumentListWrapping:MealRepositoryImpl.kt$MealRepositoryImpl$( "getAllMeals: %d receitas de %d categorias em %d ms", meals.size, categories.size, elapsed.inWholeMilliseconds )</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 24.sp, lineHeight = 32.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 28.sp, lineHeight = 36.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 36.sp, lineHeight = 44.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 11.sp, lineHeight = 16.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 22.sp, lineHeight = 28.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>FinalNewline:ApiModule.kt$br.com.thiago.tempero.di.ApiModule.kt</ID>
+    <ID>FinalNewline:CategoryDto.kt$br.com.thiago.tempero.data.remote.dto.CategoryDto.kt</ID>
+    <ID>FinalNewline:Color.kt$br.com.thiago.tempero.presentation.constants.Color.kt</ID>
+    <ID>FinalNewline:DataError.kt$br.com.thiago.tempero.domain.error.DataError.kt</ID>
+    <ID>FinalNewline:DataSourceModule.kt$br.com.thiago.tempero.di.DataSourceModule.kt</ID>
+    <ID>FinalNewline:DispatcherModule.kt$br.com.thiago.tempero.di.DispatcherModule.kt</ID>
+    <ID>FinalNewline:ExploreIntent.kt$br.com.thiago.tempero.presentation.screen.explore.ExploreIntent.kt</ID>
+    <ID>FinalNewline:ExploreViewModel.kt$br.com.thiago.tempero.presentation.viewmodel.ExploreViewModel.kt</ID>
+    <ID>FinalNewline:MealDto.kt$br.com.thiago.tempero.data.remote.dto.MealDto.kt</ID>
+    <ID>FinalNewline:MealModel.kt$br.com.thiago.tempero.domain.model.MealModel.kt</ID>
+    <ID>FinalNewline:MealPagingSource.kt$br.com.thiago.tempero.presentation.paging.MealPagingSource.kt</ID>
+    <ID>FinalNewline:MealRemoteDataSource.kt$br.com.thiago.tempero.data.remote.MealRemoteDataSource.kt</ID>
+    <ID>FinalNewline:MealRepository.kt$br.com.thiago.tempero.domain.repository.MealRepository.kt</ID>
+    <ID>FinalNewline:RepositoryModule.kt$br.com.thiago.tempero.di.RepositoryModule.kt</ID>
+    <ID>FinalNewline:Shape.kt$br.com.thiago.tempero.presentation.constants.Shape.kt</ID>
+    <ID>FinalNewline:TheMealDBAPI.kt$br.com.thiago.tempero.data.remote.api.TheMealDBAPI.kt</ID>
+    <ID>FinalNewline:Theme.kt$br.com.thiago.tempero.presentation.constants.Theme.kt</ID>
+    <ID>FinalNewline:Type.kt$br.com.thiago.tempero.presentation.constants.Type.kt</ID>
+    <ID>LongParameterList:TestData.kt$( id: String = "1", name: String = "Meal $id", category: String? = null, instructions: String? = null, tags: String? = null, ingredients: List&lt;String?&gt; = emptyList(), measures: List&lt;String?&gt; = emptyList(), alternate: String? = null, source: String? = null )</ID>
+    <ID>MaxLineLength:AnalyticsEventTest.kt$AnalyticsEventTest$assertEquals(100, (AnalyticsEvent.Search(long, AnalyticsEvent.METHOD_TYPED, 0).params["search_term"] as String).length)</ID>
+    <ID>MaxLineLength:AnalyticsEventTest.kt$AnalyticsEventTest$assertEquals(100, (AnalyticsEvent.SelectItem(meal(name = long), "explore").params["item_name"] as String).length)</ID>
+    <ID>MaxLineLength:ApiModule.kt$ApiModule$level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE</ID>
+    <ID>MaxLineLength:ExploreScreen.kt$item(span = FullWidth) { AppendFooter(meals.loadState.append, onRetry = meals::retry) }</ID>
+    <ID>MaxLineLength:FavoriteRepository.kt$FavoriteRepository$/** Favoritos ordenados por nome. Falhas do banco chegam como [br.com.thiago.tempero.domain.error.DataError.Storage]. */</ID>
+    <ID>MaxLineLength:MealPagingSourceTest.kt$MealPagingSourceTest$val</ID>
+    <ID>MaxLineLength:PreviewData.kt$PreviewData$"Add the chopped tomatoes, red chilli flakes and Italian seasoning. Bring to a boil and cook for 5 minutes."</ID>
+    <ID>MaxLineLength:PreviewData.kt$PreviewData$"Bring a large pot of water to a boil. Add kosher salt to the boiling water, then add the pasta. Cook according to the package instructions, about 9 minutes."</ID>
+    <ID>MaxLineLength:PreviewData.kt$PreviewData$"In a large skillet over medium-high heat, add the olive oil and heat until the oil starts to shimmer. Add the garlic and cook, stirring, until fragrant, 1 to 2 minutes."</ID>
+    <ID>MaxLineLength:TestHelpers.kt$/** Espera (tempo real) o StateFlow atingir um valor que satisfaça [predicate]; usado quando o Room responde em outra thread. */</ID>
+    <ID>MaxLineLength:Type.kt$bodyLarge = base.bodyLarge.copy(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>MaxLineLength:Type.kt$bodyMedium = base.bodyMedium.copy(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>MaxLineLength:Type.kt$bodySmall = base.bodySmall.copy(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>MaxLineLength:Type.kt$displaySmall = base.displaySmall.copy(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 36.sp, lineHeight = 44.sp)</ID>
+    <ID>MaxLineLength:Type.kt$headlineMedium = base.headlineMedium.copy(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 28.sp, lineHeight = 36.sp)</ID>
+    <ID>MaxLineLength:Type.kt$headlineSmall = base.headlineSmall.copy(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 24.sp, lineHeight = 32.sp)</ID>
+    <ID>MaxLineLength:Type.kt$labelLarge = base.labelLarge.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>MaxLineLength:Type.kt$labelMedium = base.labelMedium.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>MaxLineLength:Type.kt$labelSmall = base.labelSmall.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 11.sp, lineHeight = 16.sp)</ID>
+    <ID>MaxLineLength:Type.kt$titleLarge = base.titleLarge.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 22.sp, lineHeight = 28.sp)</ID>
+    <ID>MaxLineLength:Type.kt$titleMedium = base.titleMedium.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>MaxLineLength:Type.kt$titleSmall = base.titleSmall.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>MaximumLineLength:AnalyticsEventTest.kt$AnalyticsEventTest$ </ID>
+    <ID>MaximumLineLength:ApiModule.kt$ApiModule$ </ID>
+    <ID>MaximumLineLength:ExploreScreen.kt$ </ID>
+    <ID>MaximumLineLength:MealPagingSourceTest.kt$MealPagingSourceTest$ </ID>
+    <ID>MaximumLineLength:PreviewData.kt$PreviewData$ </ID>
+    <ID>MaximumLineLength:Type.kt$ </ID>
+    <ID>MultiLineIfElse:CategoryChips.kt$null</ID>
+    <ID>MultiLineIfElse:DetailViewModel.kt$DetailViewModel$AnalyticsEvent.FavoriteAdded(current, AnalyticsEvent.ORIGIN_DETAIL)</ID>
+    <ID>MultiLineIfElse:DetailViewModel.kt$DetailViewModel$AnalyticsEvent.FavoriteRemoved(current.id, AnalyticsEvent.ORIGIN_DETAIL)</ID>
+    <ID>MultiLineIfElse:FavoritesViewModel.kt$FavoritesViewModel$FavoritesUiState.Empty(removed)</ID>
+    <ID>MultiLineIfElse:FavoritesViewModel.kt$FavoritesViewModel$FavoritesUiState.Success(meals, removed)</ID>
+    <ID>MultiLineIfElse:IngredientRow.kt$MaterialTheme.colorScheme.onSurface</ID>
+    <ID>MultiLineIfElse:IngredientRow.kt$MaterialTheme.colorScheme.onSurfaceVariant</ID>
+    <ID>MultiLineIfElse:MealPagingSourceTest.kt$MealPagingSourceTest$LoadParams.Append(key = key, loadSize = size, placeholdersEnabled = false)</ID>
+    <ID>MultiLineIfElse:MealPagingSourceTest.kt$MealPagingSourceTest$LoadParams.Refresh(key = null, loadSize = size, placeholdersEnabled = false)</ID>
+    <ID>NewLineAtEndOfFile:ApiModule.kt$br.com.thiago.tempero.di.ApiModule.kt</ID>
+    <ID>NewLineAtEndOfFile:CategoryDto.kt$br.com.thiago.tempero.data.remote.dto.CategoryDto.kt</ID>
+    <ID>NewLineAtEndOfFile:Color.kt$br.com.thiago.tempero.presentation.constants.Color.kt</ID>
+    <ID>NewLineAtEndOfFile:DataError.kt$br.com.thiago.tempero.domain.error.DataError.kt</ID>
+    <ID>NewLineAtEndOfFile:DataSourceModule.kt$br.com.thiago.tempero.di.DataSourceModule.kt</ID>
+    <ID>NewLineAtEndOfFile:DispatcherModule.kt$br.com.thiago.tempero.di.DispatcherModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ExploreIntent.kt$br.com.thiago.tempero.presentation.screen.explore.ExploreIntent.kt</ID>
+    <ID>NewLineAtEndOfFile:ExploreViewModel.kt$br.com.thiago.tempero.presentation.viewmodel.ExploreViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MealDto.kt$br.com.thiago.tempero.data.remote.dto.MealDto.kt</ID>
+    <ID>NewLineAtEndOfFile:MealModel.kt$br.com.thiago.tempero.domain.model.MealModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MealPagingSource.kt$br.com.thiago.tempero.presentation.paging.MealPagingSource.kt</ID>
+    <ID>NewLineAtEndOfFile:MealRemoteDataSource.kt$br.com.thiago.tempero.data.remote.MealRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:MealRepository.kt$br.com.thiago.tempero.domain.repository.MealRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:RepositoryModule.kt$br.com.thiago.tempero.di.RepositoryModule.kt</ID>
+    <ID>NewLineAtEndOfFile:Shape.kt$br.com.thiago.tempero.presentation.constants.Shape.kt</ID>
+    <ID>NewLineAtEndOfFile:TheMealDBAPI.kt$br.com.thiago.tempero.data.remote.api.TheMealDBAPI.kt</ID>
+    <ID>NewLineAtEndOfFile:Theme.kt$br.com.thiago.tempero.presentation.constants.Theme.kt</ID>
+    <ID>NewLineAtEndOfFile:Type.kt$br.com.thiago.tempero.presentation.constants.Type.kt</ID>
+    <ID>NoMultipleSpaces:Shape.kt$ </ID>
+    <ID>NoMultipleSpaces:Shape.kt$Spacing$ </ID>
+    <ID>NoMultipleSpaces:TemperoApplication.kt$TemperoApplication$ </ID>
+    <ID>ReturnCount:MealMapper.kt$fun MealDto.toDomain(fallbackCategory: MealCategory? = null): Meal?</ID>
+    <ID>SpacingAroundColon:ExploreIntent.kt$ExploreIntent.Retry$:</ID>
+    <ID>SpacingAroundColon:ExploreIntent.kt$ExploreIntent.SelectCategory$:</ID>
+    <ID>SpacingAroundColon:MealRemoteDataSource.kt$MealRemoteDataSourceImpl$:</ID>
+    <ID>SpacingAroundKeyword:ExploreViewModel.kt$ExploreViewModel$when</ID>
+    <ID>SpacingBetweenDeclarationsWithAnnotations:DispatcherModule.kt$DefaultDispatcher</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:DetailScreen.kt$Exception()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:ExploreScreen.kt$Exception()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:FavoritesScreen.kt$Exception()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:SearchScreen.kt$Exception()</ID>
+    <ID>TooGenericExceptionCaught:FavoriteRepositoryImpl.kt$FavoriteRepositoryImpl$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MealRepositoryImpl.kt$MealRepositoryImpl$e: Exception</ID>
+  </CurrentIssues>
+</SmellBaseline>

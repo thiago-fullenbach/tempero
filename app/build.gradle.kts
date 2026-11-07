@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.androidx.room)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.detekt)
 }
 
 val localProps = Properties().apply {
@@ -27,14 +28,15 @@ android {
         applicationId = "br.com.thiago.tempero"
         minSdk = 28
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0.0"
+        // No CI de release, a versão é derivada da tag (-Ptempero.versionName / -Ptempero.versionCode).
+        versionCode = (findProperty("tempero.versionCode") as String?)?.toInt() ?: 1
+        versionName = (findProperty("tempero.versionName") as String?) ?: "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField(
             "String", "MEALDB_API_KEY",
-            "\"${localProps.getProperty("MEALDB_API_KEY", "1")}\""
+            "\"${localProps.getProperty("MEALDB_API_KEY") ?: System.getenv("MEALDB_API_KEY") ?: "1"}\""
         )
         // `ANALYTICS_IN_DEBUG=true` no local.properties liga o Analytics em builds de debug.
         buildConfigField(
@@ -43,8 +45,24 @@ android {
         )
     }
 
+    // Assinatura de release: só é configurada quando o keystore é informado via variáveis de ambiente (CI).
+    val releaseKeystorePath = System.getenv("TEMPERO_KEYSTORE_PATH")
+    signingConfigs {
+        if (releaseKeystorePath != null) {
+            create("release") {
+                storeFile = file(releaseKeystorePath)
+                storePassword = System.getenv("TEMPERO_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("TEMPERO_KEY_ALIAS")
+                keyPassword = System.getenv("TEMPERO_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            if (releaseKeystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -68,6 +86,30 @@ android {
         compose = true
         buildConfig = true
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+        abortOnError = true
+        checkDependencies = false
+        htmlReport = true
+        sarifReport = true
+    }
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom("$rootDir/config/detekt/detekt.yml")
+    baseline = file("detekt-baseline.xml")
+    autoCorrect = false
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        sarif.required.set(true)
+        xml.required.set(false)
+        txt.required.set(false)
+        md.required.set(false)
+    }
 }
 
 room {
@@ -75,6 +117,7 @@ room {
 }
 
 dependencies {
+    detektPlugins(libs.detekt.formatting)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
