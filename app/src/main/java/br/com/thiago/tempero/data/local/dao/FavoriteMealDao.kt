@@ -14,6 +14,9 @@ interface FavoriteMealDao {
     @Query("SELECT EXISTS(SELECT 1 FROM favorite_meals WHERE id = :id)")
     fun observeIsFavorite(id: Long): Flow<Boolean>
 
+    @Query("SELECT * FROM favorite_meals WHERE id = :id")
+    suspend fun getById(id: Long): FavoriteMealEntity?
+
     @Upsert
     suspend fun upsert(entity: FavoriteMealEntity)
 

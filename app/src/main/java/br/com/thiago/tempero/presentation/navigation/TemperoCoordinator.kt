@@ -7,13 +7,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.presentation.screen.detail.DetailEvent
 import br.com.thiago.tempero.presentation.screen.explore.ExploreEvent
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesEvent
 import br.com.thiago.tempero.presentation.screen.search.SearchEvent
 
 /**
  * Coordinator da navegação: as telas emitem eventos semânticos ([ExploreEvent],
- * [SearchEvent], [FavoritesEvent]) e é aqui que se decide para onde ir, mantendo [NavHostController]
+ * [SearchEvent], [FavoritesEvent], [DetailEvent]) e é aqui que se decide para onde ir, mantendo [NavHostController]
  * e rotas fora das telas.
  */
 @Stable
@@ -51,6 +52,12 @@ class TemperoCoordinator(val navController: NavHostController) {
         }
     }
 
+    fun onEvent(event: DetailEvent) {
+        when (event) {
+            DetailEvent.BackRequested -> runIfResumed { navController.popBackStack() }
+        }
+    }
+
     /** Troca de aba da barra inferior, guardando e restaurando o estado de cada uma. */
     fun onTabSelected(destination: TopLevelDestination) = runIfResumed {
         navController.navigate(destination.route) {
@@ -72,10 +79,8 @@ class TemperoCoordinator(val navController: NavHostController) {
         }
     }
 
-    /** Ainda não há tela de detalhe da receita; sem efeito por enquanto. */
-    @Suppress("UNUSED_PARAMETER")
-    private fun openMeal(meal: Meal) {
-        // TODO: navegar para o detalhe da receita
+    private fun openMeal(meal: Meal) = runIfResumed {
+        navController.navigate(TemperoDestination.Detail(meal.id)) { launchSingleTop = true }
     }
 }
 

@@ -33,6 +33,13 @@ class FavoriteRepositoryImpl @Inject constructor(
         localDataSource.observeIsFavorite(id)
             .catch { throw it.toStorageError() }
 
+    override suspend fun getFavorite(id: Long): Meal? =
+        safeDbCall {
+            withContext(ioDispatcher) {
+                localDataSource.getFavorite(id)?.toDomain()
+            }
+        }
+
     override suspend fun addFavorite(meal: Meal) =
         safeDbCall {
             withContext(ioDispatcher) {

@@ -1,10 +1,10 @@
 package br.com.thiago.tempero.data.remote.mapper
 
+import br.com.thiago.tempero.data.mapper.toMealSteps
 import br.com.thiago.tempero.data.remote.dto.MealDto
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.domain.model.MealCategory
 import br.com.thiago.tempero.domain.model.MealIngredient
-import br.com.thiago.tempero.domain.model.MealStep
 
 /**
  * Converte o DTO em [Meal]. A categoria vem de `strCategory`; se ausente (ex.: `filter.php`),
@@ -20,7 +20,7 @@ fun MealDto.toDomain(fallbackCategory: MealCategory? = null): Meal? {
         category = category,
         area = strArea.orEmpty(),
         country = strCountry.orEmpty(),
-        steps = strInstructions.toSteps(),
+        steps = strInstructions.toMealSteps(),
         imageUrl = strMealThumb.orEmpty(),
         videoUrl = strYoutube.cleanOrNull(),
         tags = strTags.orEmpty()
@@ -43,12 +43,5 @@ private fun MealDto.toIngredients(): List<MealIngredient> =
         val name = ingredient.cleanOrNull() ?: return@mapNotNull null
         MealIngredient(ingredient = name, measure = measure.cleanOrNull())
     }
-
-private fun String?.toSteps(): List<MealStep> =
-    orEmpty()
-        .lines()
-        .map { it.trim() }
-        .filter { it.isNotEmpty() }
-        .map { MealStep(it) }
 
 private fun String?.cleanOrNull(): String? = this?.trim()?.takeIf { it.isNotEmpty() }
