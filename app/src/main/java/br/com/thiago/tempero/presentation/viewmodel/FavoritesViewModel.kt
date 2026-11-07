@@ -2,6 +2,8 @@ package br.com.thiago.tempero.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.domain.connectivity.ConnectivityObserver
 import br.com.thiago.tempero.domain.error.DataError
 import br.com.thiago.tempero.domain.model.Meal
@@ -29,6 +31,7 @@ import timber.log.Timber
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     private val repository: FavoriteRepository,
+    private val analytics: AnalyticsTracker,
     connectivity: ConnectivityObserver
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<FavoritesUiState>(FavoritesUiState.Loading)
@@ -76,6 +79,7 @@ class FavoritesViewModel @Inject constructor(
             try {
                 repository.removeFavorite(meal.id)
                 recentlyRemoved.value = meal
+                analytics.track(AnalyticsEvent.FavoriteRemoved(meal.id, AnalyticsEvent.ORIGIN_FAVORITES))
                 Timber.d("Favoritos: removida a receita %d, aguardando desfazer", meal.id)
             } catch (e: DataError) {
                 Timber.w(e, "Favoritos: falha ao remover a receita %d", meal.id)
@@ -90,6 +94,7 @@ class FavoritesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 repository.addFavorite(meal)
+                analytics.track(AnalyticsEvent.FavoriteRemovalUndone(meal.id))
                 Timber.d("Favoritos: desfeita a remoção da receita %d", meal.id)
             } catch (e: DataError) {
                 Timber.w(e, "Favoritos: falha ao desfazer a remoção da receita %d", meal.id)

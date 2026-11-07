@@ -36,6 +36,11 @@ android {
             "String", "MEALDB_API_KEY",
             "\"${localProps.getProperty("MEALDB_API_KEY", "1")}\""
         )
+        // `ANALYTICS_IN_DEBUG=true` no local.properties liga o Analytics em builds de debug.
+        buildConfigField(
+            "boolean", "ANALYTICS_IN_DEBUG",
+            localProps.getProperty("ANALYTICS_IN_DEBUG", "false").toBoolean().toString()
+        )
     }
 
     buildTypes {

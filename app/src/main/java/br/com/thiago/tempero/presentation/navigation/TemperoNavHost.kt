@@ -15,6 +15,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.presentation.screen.detail.DetailRoute
 import br.com.thiago.tempero.presentation.screen.explore.ExploreRoute
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesRoute
@@ -26,8 +27,9 @@ import br.com.thiago.tempero.presentation.screen.search.SearchRoute
  */
 @Composable
 fun TemperoNavHost(
+    analytics: AnalyticsTracker,
     modifier: Modifier = Modifier,
-    coordinator: TemperoCoordinator = rememberTemperoCoordinator()
+    coordinator: TemperoCoordinator = rememberTemperoCoordinator(analytics = analytics)
 ) {
     val backStackEntry by coordinator.navController.currentBackStackEntryAsState()
     val currentDestination = backStackEntry?.destination

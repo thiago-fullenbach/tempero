@@ -4,6 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.domain.error.DataError
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.domain.repository.FavoriteRepository
@@ -32,6 +34,7 @@ class DetailViewModel @Inject constructor(
     private val getMealDetail: GetMealDetailUseCase,
     private val toggleFavorite: ToggleFavoriteUseCase,
     private val favoriteRepository: FavoriteRepository,
+    private val analytics: AnalyticsTracker,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     private val mealId: Long = savedStateHandle.toRoute<TemperoDestination.Detail>().mealId
@@ -67,8 +70,10 @@ class DetailViewModel @Inject constructor(
                     return@launch
                 }
                 meal.value = loaded
+                analytics.track(AnalyticsEvent.ViewItem(loaded))
             } catch (e: DataError) {
                 Timber.w(e, "Detalhe: falha ao carregar mealId=%d, exibindo estado de erro", mealId)
+                analytics.track(AnalyticsEvent.LoadFailed(AnalyticsEvent.SCREEN_DETAIL, e))
                 _uiState.value = DetailUiState.Error(e)
                 return@launch
             }
@@ -90,6 +95,10 @@ class DetailViewModel @Inject constructor(
             try {
                 val isFavorite = toggleFavorite(current)
                 Timber.d("Detalhe: mealId=%d agora %s", current.id, if (isFavorite) "favorita" else "não favorita")
+                analytics.track(
+                    if (isFavorite) AnalyticsEvent.FavoriteAdded(current, AnalyticsEvent.ORIGIN_DETAIL)
+                    else AnalyticsEvent.FavoriteRemoved(current.id, AnalyticsEvent.ORIGIN_DETAIL)
+                )
             } catch (e: DataError) {
                 Timber.w(e, "Detalhe: falha ao alternar favorito de mealId=%d", current.id)
                 _uiState.value = DetailUiState.Error(e)

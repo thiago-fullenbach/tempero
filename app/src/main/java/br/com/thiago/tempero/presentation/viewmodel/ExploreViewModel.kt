@@ -6,6 +6,8 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.domain.error.DataError
 import br.com.thiago.tempero.domain.model.Meal
 import br.com.thiago.tempero.domain.model.MealCategory
@@ -30,7 +32,8 @@ import timber.log.Timber
 
 @HiltViewModel
 class ExploreViewModel @Inject constructor(
-    private val repository: MealRepository
+    private val repository: MealRepository,
+    private val analytics: AnalyticsTracker
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<ExploreUiState>(ExploreUiState.Loading)
     val uiState = _uiState.asStateFlow()
@@ -72,11 +75,15 @@ class ExploreViewModel @Inject constructor(
             Timber.d("Explorar carregado: %d categorias, %d receitas", cats.size, allMeals.value?.size ?: 0)
         } catch (e: DataError) {
             Timber.w(e, "Explorar: falha ao carregar, exibindo estado de erro")
+            analytics.track(AnalyticsEvent.LoadFailed(AnalyticsEvent.SCREEN_EXPLORE, e))
             _uiState.value = ExploreUiState.Error(e)
         }
     }
 
-    private fun onCategorySelected(c: MealCategory?) = _uiState.update {
-        if (it is ExploreUiState.Success) it.copy(selected = c) else it
+    private fun onCategorySelected(c: MealCategory?) {
+        analytics.track(AnalyticsEvent.CategorySelected(c?.category))
+        _uiState.update {
+            if (it is ExploreUiState.Success) it.copy(selected = c) else it
+        }
     }
 }
