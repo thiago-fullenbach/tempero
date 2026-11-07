@@ -1,9 +1,11 @@
 package br.com.thiago.tempero.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.com.thiago.tempero.domain.model.Meal
@@ -11,6 +13,7 @@ import br.com.thiago.tempero.presentation.screen.detail.DetailEvent
 import br.com.thiago.tempero.presentation.screen.explore.ExploreEvent
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesEvent
 import br.com.thiago.tempero.presentation.screen.search.SearchEvent
+import timber.log.Timber
 
 /**
  * Coordinator da navegação: as telas emitem eventos semânticos ([ExploreEvent],
@@ -74,8 +77,11 @@ class TemperoCoordinator(val navController: NavHostController) {
      * a tela em branco).
      */
     private inline fun runIfResumed(block: () -> Unit) {
-        if (navController.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED) {
+        val state = navController.currentBackStackEntry?.lifecycle?.currentState
+        if (state == Lifecycle.State.RESUMED) {
             block()
+        } else {
+            Timber.d("Navegação ignorada: tela atual não está RESUMED (estado=%s)", state)
         }
     }
 
@@ -87,4 +93,13 @@ class TemperoCoordinator(val navController: NavHostController) {
 @Composable
 fun rememberTemperoCoordinator(
     navController: NavHostController = rememberNavController()
-): TemperoCoordinator = remember(navController) { TemperoCoordinator(navController) }
+): TemperoCoordinator {
+    DisposableEffect(navController) {
+        val listener = NavController.OnDestinationChangedListener { _, destination, _ ->
+            Timber.d("Destino: %s", destination.route)
+        }
+        navController.addOnDestinationChangedListener(listener)
+        onDispose { navController.removeOnDestinationChangedListener(listener) }
+    }
+    return remember(navController) { TemperoCoordinator(navController) }
+}

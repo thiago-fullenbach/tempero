@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import kotlin.time.Duration.Companion.milliseconds
 
 /**
@@ -43,6 +44,8 @@ class SearchViewModel @Inject constructor(
     }
 
     fun onHandleIntent(intent: SearchIntent) {
+        // QueryChanged dispara a cada tecla; o log fica em searchNow, depois do debounce.
+        if (intent !is SearchIntent.QueryChanged) Timber.d("Intent: %s", intent)
         when (intent) {
             is SearchIntent.QueryChanged -> savedStateHandle[KEY_QUERY] = intent.query
 
@@ -81,10 +84,18 @@ class SearchViewModel @Inject constructor(
                 return@launch
             }
             _uiState.value = SearchUiState.Loading
+            Timber.d("Buscando '%s'", q)
             _uiState.value = try {
                 val meals = repository.searchMeals(q)
-                if (meals.isEmpty()) SearchUiState.Empty else SearchUiState.Success(meals)
+                if (meals.isEmpty()) {
+                    Timber.d("Busca '%s': sem resultados", q)
+                    SearchUiState.Empty
+                } else {
+                    Timber.d("Busca '%s': %d resultados", q, meals.size)
+                    SearchUiState.Success(meals)
+                }
             } catch (e: DataError) {
+                Timber.w(e, "Busca '%s': falha, exibindo estado de erro", q)
                 SearchUiState.Error(e)
             }
         }.also { searchJob = it }

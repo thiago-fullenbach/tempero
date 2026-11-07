@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import kotlin.coroutines.cancellation.CancellationException
 
 class FavoriteRepositoryImpl @Inject constructor(
@@ -27,45 +28,55 @@ class FavoriteRepositoryImpl @Inject constructor(
         localDataSource.observeFavorites()
             .map { it.toDomain() }
             .flowOn(defaultDispatcher)
-            .catch { throw it.toStorageError() }
+            .catch { throw it.toStorageError("observeFavorites") }
 
     override fun observeIsFavorite(id: Long): Flow<Boolean> =
         localDataSource.observeIsFavorite(id)
-            .catch { throw it.toStorageError() }
+            .catch { throw it.toStorageError("observeIsFavorite($id)") }
 
     override suspend fun getFavorite(id: Long): Meal? =
-        safeDbCall {
-            withContext(ioDispatcher) {
+        safeDbCall("getFavorite($id)") {
+            val meal = withContext(ioDispatcher) {
                 localDataSource.getFavorite(id)?.toDomain()
             }
+            Timber.d("getFavorite: id=%d %s", id, if (meal != null) "encontrado no Room" else "não está no Room")
+            meal
         }
 
     override suspend fun addFavorite(meal: Meal) =
-        safeDbCall {
+        safeDbCall("addFavorite(${meal.id})") {
             withContext(ioDispatcher) {
                 localDataSource.saveFavorite(meal.toEntity(savedAt = System.currentTimeMillis()))
             }
+            Timber.d("Favorito salvo: id=%d", meal.id)
         }
 
     override suspend fun removeFavorite(id: Long) =
-        safeDbCall {
+        safeDbCall("removeFavorite($id)") {
             withContext(ioDispatcher) {
                 localDataSource.deleteFavorite(id)
             }
+            Timber.d("Favorito removido: id=%d", id)
         }
 
-    internal suspend fun <T> safeDbCall(block: suspend () -> T): T =
+    internal suspend fun <T> safeDbCall(operation: String, block: suspend () -> T): T =
         try {
             block()
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
-            throw e.toStorageError()
+            throw e.toStorageError(operation)
         }
 
-    private fun Throwable.toStorageError(): DataError = when (this) {
+    private fun Throwable.toStorageError(operation: String): DataError = when (this) {
         is DataError -> this
-        is SQLiteException, is IllegalStateException -> DataError.Storage(this)
-        else -> DataError.Unknown(this)
+        is SQLiteException, is IllegalStateException -> {
+            Timber.e(this, "Falha no Room em %s", operation)
+            DataError.Storage(this)
+        }
+        else -> {
+            Timber.e(this, "Erro inesperado no Room em %s", operation)
+            DataError.Unknown(this)
+        }
     }
 }

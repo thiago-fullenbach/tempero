@@ -20,6 +20,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Favoritos vindos do Room. A lista é observada (qualquer mudança no banco atualiza a tela);
@@ -45,6 +46,7 @@ class FavoritesViewModel @Inject constructor(
     }
 
     fun onHandleIntent(intent: FavoritesIntent) {
+        Timber.d("Intent: %s", intent)
         when (intent) {
             is FavoritesIntent.Remove -> remove(intent.meal)
             FavoritesIntent.UndoRemove -> undoRemove()
@@ -61,7 +63,10 @@ class FavoritesViewModel @Inject constructor(
                 if (meals.isEmpty()) FavoritesUiState.Empty(removed)
                 else FavoritesUiState.Success(meals, removed)
             }
-                .catch { _uiState.value = FavoritesUiState.Error(it.toDataError()) }
+                .catch {
+                    Timber.w(it, "Favoritos: falha ao observar a lista, exibindo estado de erro")
+                    _uiState.value = FavoritesUiState.Error(it.toDataError())
+                }
                 .collect { _uiState.value = it }
         }
     }
@@ -71,7 +76,9 @@ class FavoritesViewModel @Inject constructor(
             try {
                 repository.removeFavorite(meal.id)
                 recentlyRemoved.value = meal
+                Timber.d("Favoritos: removida a receita %d, aguardando desfazer", meal.id)
             } catch (e: DataError) {
+                Timber.w(e, "Favoritos: falha ao remover a receita %d", meal.id)
                 _uiState.value = FavoritesUiState.Error(e)
             }
         }
@@ -83,7 +90,9 @@ class FavoritesViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 repository.addFavorite(meal)
+                Timber.d("Favoritos: desfeita a remoção da receita %d", meal.id)
             } catch (e: DataError) {
+                Timber.w(e, "Favoritos: falha ao desfazer a remoção da receita %d", meal.id)
                 _uiState.value = FavoritesUiState.Error(e)
             }
         }

@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Detalhe da receita. A receita vem do Room (se favorita) ou da API; o estado do coração
@@ -46,6 +47,7 @@ class DetailViewModel @Inject constructor(
     }
 
     fun onHandleIntent(intent: DetailIntent) {
+        Timber.d("Intent: %s (mealId=%d)", intent, mealId)
         when (intent) {
             DetailIntent.ToggleFavorite -> toggle()
             DetailIntent.Retry -> load()
@@ -55,15 +57,18 @@ class DetailViewModel @Inject constructor(
     private fun load() {
         loadJob?.cancel()
         _uiState.value = DetailUiState.Loading
+        Timber.d("Detalhe: carregando mealId=%d", mealId)
         loadJob = viewModelScope.launch {
             try {
                 val loaded = getMealDetail(mealId)
                 if (loaded == null) {
+                    Timber.w("Detalhe: receita %d não encontrada", mealId)
                     _uiState.value = DetailUiState.NotFound
                     return@launch
                 }
                 meal.value = loaded
             } catch (e: DataError) {
+                Timber.w(e, "Detalhe: falha ao carregar mealId=%d, exibindo estado de erro", mealId)
                 _uiState.value = DetailUiState.Error(e)
                 return@launch
             }
@@ -71,7 +76,10 @@ class DetailViewModel @Inject constructor(
             combine(meal.filterNotNull(), favoriteRepository.observeIsFavorite(mealId)) { meal, isFavorite ->
                 DetailUiState.Success(meal, isFavorite)
             }
-                .catch { _uiState.value = DetailUiState.Error(it.toDataError()) }
+                .catch {
+                    Timber.w(it, "Detalhe: falha ao observar favorito de mealId=%d", mealId)
+                    _uiState.value = DetailUiState.Error(it.toDataError())
+                }
                 .collect { _uiState.value = it }
         }
     }
@@ -80,8 +88,10 @@ class DetailViewModel @Inject constructor(
         val current = meal.value ?: return
         viewModelScope.launch {
             try {
-                toggleFavorite(current)
+                val isFavorite = toggleFavorite(current)
+                Timber.d("Detalhe: mealId=%d agora %s", current.id, if (isFavorite) "favorita" else "não favorita")
             } catch (e: DataError) {
+                Timber.w(e, "Detalhe: falha ao alternar favorito de mealId=%d", current.id)
                 _uiState.value = DetailUiState.Error(e)
             }
         }

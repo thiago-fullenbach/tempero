@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @HiltViewModel
 class ExploreViewModel @Inject constructor(
@@ -55,6 +56,7 @@ class ExploreViewModel @Inject constructor(
     }
 
     fun onHandleIntent(intent: ExploreIntent) {
+        Timber.d("Intent: %s", intent)
         when(intent) {
             ExploreIntent.Retry -> loadMeals()
             is ExploreIntent.SelectCategory -> onCategorySelected(intent.category)
@@ -67,7 +69,9 @@ class ExploreViewModel @Inject constructor(
             val cats = repository.listCategories()
             allMeals.value = repository.getAllMeals(cats)
             _uiState.value = ExploreUiState.Success(cats)
+            Timber.d("Explorar carregado: %d categorias, %d receitas", cats.size, allMeals.value?.size ?: 0)
         } catch (e: DataError) {
+            Timber.w(e, "Explorar: falha ao carregar, exibindo estado de erro")
             _uiState.value = ExploreUiState.Error(e)
         }
     }
