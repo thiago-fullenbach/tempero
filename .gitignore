@@ -12,3 +12,7 @@ local.properties
 # Keystores de release (nunca versionar)
 *.jks
 *.keystore
+
+# Saída de build de todos os módulos
+**/build/
+.kotlin/

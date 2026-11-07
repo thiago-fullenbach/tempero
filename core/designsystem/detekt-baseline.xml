@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 24.sp, lineHeight = 32.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 28.sp, lineHeight = 36.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 36.sp, lineHeight = 44.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 11.sp, lineHeight = 16.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 22.sp, lineHeight = 28.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>ArgumentListWrapping:Type.kt$(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>MaxLineLength:Type.kt$bodyLarge = base.bodyLarge.copy(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>MaxLineLength:Type.kt$bodyMedium = base.bodyMedium.copy(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>MaxLineLength:Type.kt$bodySmall = base.bodySmall.copy(fontFamily = Plain, fontWeight = FontWeight.Normal, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>MaxLineLength:Type.kt$displaySmall = base.displaySmall.copy(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 36.sp, lineHeight = 44.sp)</ID>
+    <ID>MaxLineLength:Type.kt$headlineMedium = base.headlineMedium.copy(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 28.sp, lineHeight = 36.sp)</ID>
+    <ID>MaxLineLength:Type.kt$headlineSmall = base.headlineSmall.copy(fontFamily = Brand, fontWeight = FontWeight.Medium, fontSize = 24.sp, lineHeight = 32.sp)</ID>
+    <ID>MaxLineLength:Type.kt$labelLarge = base.labelLarge.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>MaxLineLength:Type.kt$labelMedium = base.labelMedium.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 12.sp, lineHeight = 16.sp)</ID>
+    <ID>MaxLineLength:Type.kt$labelSmall = base.labelSmall.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 11.sp, lineHeight = 16.sp)</ID>
+    <ID>MaxLineLength:Type.kt$titleLarge = base.titleLarge.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 22.sp, lineHeight = 28.sp)</ID>
+    <ID>MaxLineLength:Type.kt$titleMedium = base.titleMedium.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 16.sp, lineHeight = 24.sp)</ID>
+    <ID>MaxLineLength:Type.kt$titleSmall = base.titleSmall.copy(fontFamily = Plain, fontWeight = FontWeight.Medium, fontSize = 14.sp, lineHeight = 20.sp)</ID>
+    <ID>MaximumLineLength:Type.kt$ </ID>
+    <ID>NoMultipleSpaces:Shape.kt$ </ID>
+    <ID>NoMultipleSpaces:Shape.kt$Spacing$ </ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(100, (AnalyticsEvent.Search(long, AnalyticsEvent.METHOD_TYPED, 0).params["search_term"] as String).length)</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(100, (AnalyticsEvent.SelectItem(meal(name = long), "explore").params["item_name"] as String).length)</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(long, AnalyticsEvent.METHOD_TYPED, 0)</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(meal(name = long), "explore")</ID>
+    <ID>ArgumentListWrapping:AnalyticsEventTest.kt$AnalyticsEventTest$(name = long)</ID>
+    <ID>MaxLineLength:AnalyticsEventTest.kt$AnalyticsEventTest$assertEquals(100, (AnalyticsEvent.Search(long, AnalyticsEvent.METHOD_TYPED, 0).params["search_term"] as String).length)</ID>
+    <ID>MaxLineLength:AnalyticsEventTest.kt$AnalyticsEventTest$assertEquals(100, (AnalyticsEvent.SelectItem(meal(name = long), "explore").params["item_name"] as String).length)</ID>
+    <ID>MaxLineLength:FavoriteRepository.kt$FavoriteRepository$/** Favoritos ordenados por nome. Falhas do banco chegam como [br.com.thiago.tempero.domain.error.DataError.Storage]. */</ID>
+    <ID>MaxLineLength:TestHelpers.kt$/** Espera (tempo real) o StateFlow atingir um valor que satisfaça [predicate]; usado quando o Room responde em outra thread. */</ID>
+    <ID>MaximumLineLength:AnalyticsEventTest.kt$AnalyticsEventTest$ </ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -21,4 +22,18 @@ dependencyResolutionManagement {
 
 rootProject.name = "Tempero"
 include(":app")
+include(":core:model")
+include(":core:domain")
+include(":core:common")
+include(":core:network")
+include(":core:database")
+include(":core:data")
+include(":core:analytics")
+include(":core:designsystem")
+include(":core:ui")
+include(":feature:explore")
+include(":feature:search")
+include(":feature:favorites")
+include(":feature:detail")
+include(":core:testing")
  

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>MultiLineIfElse:DetailViewModel.kt$DetailViewModel$AnalyticsEvent.FavoriteAdded(current, AnalyticsEvent.ORIGIN_DETAIL)</ID>
+    <ID>MultiLineIfElse:DetailViewModel.kt$DetailViewModel$AnalyticsEvent.FavoriteRemoved(current.id, AnalyticsEvent.ORIGIN_DETAIL)</ID>
+    <ID>MultiLineIfElse:IngredientRow.kt$MaterialTheme.colorScheme.onSurface</ID>
+    <ID>MultiLineIfElse:IngredientRow.kt$MaterialTheme.colorScheme.onSurfaceVariant</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:DetailScreen.kt$Exception()</ID>
+  </CurrentIssues>
+</SmellBaseline>

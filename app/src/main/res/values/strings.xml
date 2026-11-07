@@ -1,57 +1,5 @@
 <resources>
     <string name="app_name">Tempero</string>
-    <string name="explore_title">Tempero</string>
-    <string name="explore_subtitle">What are we cooking today?</string>
-    <string name="explore_search_placeholder">Search recipes</string>
-    <string name="explore_category_all">All</string>
-    <string name="explore_loading">Loading recipes…</string>
-    <string name="explore_error_title">No connection</string>
-    <string name="explore_error_message">We couldn\'t load the recipes. Check your internet connection and try again.</string>
-    <string name="explore_retry">Try again</string>
-    <string name="explore_empty_title">Nothing found</string>
-    <string name="explore_empty_message">No recipes available right now.</string>
-    <string name="explore_scroll_to_top">Back to top</string>
-    <string name="search_placeholder">Search recipes</string>
-    <string name="search_close">Close search</string>
-    <string name="search_clear">Clear</string>
-    <string name="search_suggestions_title">Suggestions</string>
-    <string name="search_use_suggestion">Use “%1$s” in search</string>
-    <string name="search_empty_title">Nothing found</string>
-    <string name="search_empty_message">No recipes for “%1$s”. Try the English name or another word.</string>
-    <string name="search_explore_categories">Explore categories</string>
-    <string name="search_open_recipe">Open recipe</string>
-    <string-array name="search_suggestions">
-        <item>chicken</item>
-        <item>pasta</item>
-        <item>cake</item>
-        <item>soup</item>
-        <item>beef</item>
-    </string-array>
-    <string name="explore_see_favorites">See my favorites</string>
     <string name="nav_explore">Explore</string>
     <string name="nav_favorites">Favorites</string>
-    <string name="favorites_title">Favorites</string>
-    <string name="favorites_offline_banner">You\'re offline. Your favorites are still available.</string>
-    <string name="favorites_empty_title">No favorites yet</string>
-    <string name="favorites_empty_message">Tap the heart on a recipe to save it here. It stays available even without internet.</string>
-    <string name="favorites_explore_recipes">Explore recipes</string>
-    <string name="favorites_removed">Recipe removed</string>
-    <string name="favorites_undo">Undo</string>
-    <string name="favorites_remove">Remove from favorites</string>
-    <string name="favorites_add">Add to favorites</string>
-    <string name="detail_back">Back</string>
-    <string name="detail_ingredients">Ingredients</string>
-    <string name="detail_ingredients_progress">%1$d of %2$d</string>
-    <string name="detail_instructions">Instructions</string>
-    <string name="detail_not_found_title">Recipe not found</string>
-    <string name="detail_not_found_message">This recipe is no longer available.</string>
-    <string name="detail_go_back">Go back</string>
-    <plurals name="favorites_count">
-        <item quantity="one">%d recipe</item>
-        <item quantity="other">%d recipes</item>
-    </plurals>
-    <plurals name="search_results_count">
-        <item quantity="one">%d result</item>
-        <item quantity="other">%d results</item>
-    </plurals>
 </resources>

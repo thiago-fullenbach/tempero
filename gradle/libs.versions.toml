@@ -28,6 +28,7 @@ turbine = "1.2.0"
 robolectric = "4.14.1"
 testCore = "1.6.1"
 detekt = "1.23.8"
+jakartaInject = "2.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -74,6 +75,16 @@ hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testi
 androidx-paging-testing = { group = "androidx.paging", name = "paging-testing", version.ref = "paging" }
 coil-test = { group = "io.coil-kt", name = "coil-test", version.ref = "coil" }
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+jakarta-inject-api = { group = "jakarta.inject", name = "jakarta.inject-api", version.ref = "jakartaInject" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+
+# Dependências do build-logic (convention plugins)
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
+room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -86,3 +97,15 @@ androidx-room = { id = "androidx.room", version.ref = "room" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlyticsPlugin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
+# Convention plugins (build-logic)
+tempero-android-application = { id = "tempero.android.application", version = "unspecified" }
+tempero-android-library = { id = "tempero.android.library", version = "unspecified" }
+tempero-android-compose = { id = "tempero.android.compose", version = "unspecified" }
+tempero-android-feature = { id = "tempero.android.feature", version = "unspecified" }
+tempero-android-room = { id = "tempero.android.room", version = "unspecified" }
+tempero-hilt = { id = "tempero.hilt", version = "unspecified" }
+tempero-jvm-library = { id = "tempero.jvm.library", version = "unspecified" }
+tempero-detekt = { id = "tempero.detekt", version = "unspecified" }
