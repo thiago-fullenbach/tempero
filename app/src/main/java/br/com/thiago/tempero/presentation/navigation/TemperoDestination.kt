@@ -12,4 +12,7 @@ sealed interface TemperoDestination {
 
     @Serializable
     data object Favorites : TemperoDestination
+
+    @Serializable
+    data class Detail(val mealId: Long) : TemperoDestination
 }

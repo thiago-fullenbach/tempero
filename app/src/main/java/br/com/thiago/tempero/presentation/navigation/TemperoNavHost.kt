@@ -15,13 +15,14 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import br.com.thiago.tempero.presentation.screen.detail.DetailRoute
 import br.com.thiago.tempero.presentation.screen.explore.ExploreRoute
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesRoute
 import br.com.thiago.tempero.presentation.screen.search.SearchRoute
 
 /**
  * Grafo de navegação do app; toda decisão de destino passa pelo [coordinator].
- * A barra inferior só aparece nos destinos de [TopLevelDestination] (a Busca é tela cheia).
+ * A barra inferior só aparece nos destinos de [TopLevelDestination] (Busca e Detalhe são tela cheia).
  */
 @Composable
 fun TemperoNavHost(
@@ -66,6 +67,9 @@ fun TemperoNavHost(
             }
             composable<TemperoDestination.Favorites> {
                 FavoritesRoute(onEvent = coordinator::onEvent)
+            }
+            composable<TemperoDestination.Detail> {
+                DetailRoute(onEvent = coordinator::onEvent)
             }
         }
     }

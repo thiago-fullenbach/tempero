@@ -13,6 +13,9 @@ interface TheMealDBAPI {
     @GET("search.php")
     suspend fun searchByName(@Query("s") name: String): MealsResponseDto
 
+    @GET("lookup.php")
+    suspend fun lookupById(@Query("i") id: Long): MealsResponseDto
+
     @GET("categories.php")
     suspend fun listCategories(): CategoriesResponseDto
 }

@@ -10,6 +10,8 @@ interface MealLocalDataSource {
 
     fun observeIsFavorite(id: Long): Flow<Boolean>
 
+    suspend fun getFavorite(id: Long): FavoriteMealEntity?
+
     suspend fun saveFavorite(entity: FavoriteMealEntity)
 
     suspend fun deleteFavorite(id: Long)
@@ -21,6 +23,8 @@ class MealLocalDataSourceImpl @Inject constructor(
     override fun observeFavorites(): Flow<List<FavoriteMealEntity>> = dao.observeAll()
 
     override fun observeIsFavorite(id: Long): Flow<Boolean> = dao.observeIsFavorite(id)
+
+    override suspend fun getFavorite(id: Long): FavoriteMealEntity? = dao.getById(id)
 
     override suspend fun saveFavorite(entity: FavoriteMealEntity) = dao.upsert(entity)
 

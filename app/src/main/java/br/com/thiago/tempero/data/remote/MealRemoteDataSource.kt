@@ -10,6 +10,8 @@ interface MealRemoteDataSource {
 
     suspend fun searchMealsByName(name: String): List<MealDto>
 
+    suspend fun getMealById(id: Long): MealDto?
+
     suspend fun listCategories(): List<CategoryDto>
 }
 
@@ -21,6 +23,9 @@ class MealRemoteDataSourceImpl @Inject constructor(
 
     override suspend fun searchMealsByName(name: String): List<MealDto> =
         api.searchByName(name).meals.orEmpty()
+
+    override suspend fun getMealById(id: Long): MealDto? =
+        api.lookupById(id).meals?.firstOrNull()
 
     override suspend fun listCategories(): List<CategoryDto> =
         api.listCategories().categories.orEmpty()

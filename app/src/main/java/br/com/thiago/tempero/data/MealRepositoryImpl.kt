@@ -55,6 +55,13 @@ class MealRepositoryImpl @Inject constructor(
             }
         }
 
+    override suspend fun getMealById(id: Long): Meal? =
+        safeApiCall {
+            withContext(ioDispatcher) {
+                remoteDataSource.getMealById(id)?.toDomain()
+            }
+        }
+
     override suspend fun listCategories(): List<MealCategory> =
         safeApiCall {
             withContext(ioDispatcher) {

@@ -8,5 +8,8 @@ interface MealRepository {
 
     suspend fun searchMeals(query: String): List<Meal>
 
+    /** Receita completa (ingredientes e preparo) via `lookup.php`; `null` se o id não existe. */
+    suspend fun getMealById(id: Long): Meal?
+
     suspend fun listCategories(): List<MealCategory>
 }
