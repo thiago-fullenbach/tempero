@@ -1,0 +1,21 @@
+<resources>
+    <string name="search_placeholder">Search recipes</string>
+    <string name="search_close">Close search</string>
+    <string name="search_clear">Clear</string>
+    <string name="search_suggestions_title">Suggestions</string>
+    <string name="search_use_suggestion">Use “%1$s” in search</string>
+    <string name="search_empty_title">Nothing found</string>
+    <string name="search_empty_message">No recipes for “%1$s”. Try the English name or another word.</string>
+    <string name="search_explore_categories">Explore categories</string>
+    <string-array name="search_suggestions">
+        <item>chicken</item>
+        <item>pasta</item>
+        <item>cake</item>
+        <item>soup</item>
+        <item>beef</item>
+    </string-array>
+    <plurals name="search_results_count">
+        <item quantity="one">%d result</item>
+        <item quantity="other">%d results</item>
+    </plurals>
+</resources>

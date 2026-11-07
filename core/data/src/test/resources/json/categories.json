@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "idCategory": "1",
+      "strCategory": "Beef",
+      "strCategoryThumb": "https://www.themealdb.com/images/category/beef.png",
+      "strCategoryDescription": "Beef is the culinary name for meat from cattle."
+    },
+    {
+      "idCategory": "2",
+      "strCategory": "Chicken",
+      "strCategoryThumb": "https://www.themealdb.com/images/category/chicken.png",
+      "strCategoryDescription": "Chicken is a type of domesticated fowl."
+    }
+  ]
+}

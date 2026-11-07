@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ArgumentListWrapping:MealRepositoryImpl.kt$MealRepositoryImpl$( "getAllMeals: %d receitas de %d categorias em %d ms", meals.size, categories.size, elapsed.inWholeMilliseconds )</ID>
+    <ID>ReturnCount:MealMapper.kt$fun MealDto.toDomain(fallbackCategory: MealCategory? = null): Meal?</ID>
+    <ID>TooGenericExceptionCaught:FavoriteRepositoryImpl.kt$FavoriteRepositoryImpl$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:MealRepositoryImpl.kt$MealRepositoryImpl$e: Exception</ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ArgumentListWrapping:ExploreScreen.kt$(meals.loadState.append, onRetry = meals::retry)</ID>
+    <ID>ArgumentListWrapping:ExploreScreen.kt$(span = FullWidth)</ID>
+    <ID>ArgumentListWrapping:MealPagingSourceTest.kt$MealPagingSourceTest$(key = null, loadSize = size, placeholdersEnabled = false)</ID>
+    <ID>MaxLineLength:ExploreScreen.kt$item(span = FullWidth) { AppendFooter(meals.loadState.append, onRetry = meals::retry) }</ID>
+    <ID>MaxLineLength:MealPagingSourceTest.kt$MealPagingSourceTest$val</ID>
+    <ID>MaximumLineLength:ExploreScreen.kt$ </ID>
+    <ID>MaximumLineLength:MealPagingSourceTest.kt$MealPagingSourceTest$ </ID>
+    <ID>MultiLineIfElse:CategoryChips.kt$null</ID>
+    <ID>MultiLineIfElse:MealPagingSourceTest.kt$MealPagingSourceTest$LoadParams.Append(key = key, loadSize = size, placeholdersEnabled = false)</ID>
+    <ID>MultiLineIfElse:MealPagingSourceTest.kt$MealPagingSourceTest$LoadParams.Refresh(key = null, loadSize = size, placeholdersEnabled = false)</ID>
+    <ID>SpacingAroundColon:ExploreIntent.kt$ExploreIntent.Retry$:</ID>
+    <ID>SpacingAroundColon:ExploreIntent.kt$ExploreIntent.SelectCategory$:</ID>
+    <ID>SpacingAroundKeyword:ExploreViewModel.kt$ExploreViewModel$when</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:ExploreScreen.kt$Exception()</ID>
+  </CurrentIssues>
+</SmellBaseline>

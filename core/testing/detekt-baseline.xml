@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>LongParameterList:DtoTestData.kt$( id: String = "1", name: String = "Meal $id", category: String? = null, instructions: String? = null, tags: String? = null, ingredients: List&lt;String?&gt; = emptyList(), measures: List&lt;String?&gt; = emptyList(), alternate: String? = null, source: String? = null )</ID>
+  </CurrentIssues>
+</SmellBaseline>

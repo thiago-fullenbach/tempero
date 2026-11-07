@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>MaxLineLength:ApiModule.kt$ApiModule$level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE</ID>
+    <ID>MaximumLineLength:ApiModule.kt$ApiModule$ </ID>
+    <ID>SpacingAroundColon:MealRemoteDataSource.kt$MealRemoteDataSourceImpl$:</ID>
+  </CurrentIssues>
+</SmellBaseline>

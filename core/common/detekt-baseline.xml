@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>AnnotationOnSeparateLine:DispatcherModule.kt$DefaultDispatcher$@Qualifier @Retention(AnnotationRetention.BINARY) annotation</ID>
+    <ID>AnnotationOnSeparateLine:DispatcherModule.kt$IoDispatcher$@Qualifier @Retention(AnnotationRetention.BINARY) annotation</ID>
+    <ID>SpacingBetweenDeclarationsWithAnnotations:DispatcherModule.kt$DefaultDispatcher</ID>
+  </CurrentIssues>
+</SmellBaseline>

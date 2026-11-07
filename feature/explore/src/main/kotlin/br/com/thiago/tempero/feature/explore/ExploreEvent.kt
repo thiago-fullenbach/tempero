@@ -1,0 +1,13 @@
+package br.com.thiago.tempero.feature.explore
+
+import br.com.thiago.tempero.core.model.Meal
+
+/**
+ * Eventos que a tela Explorar emite para fora dela. Descrevem o que o usuário fez,
+ * não para onde ir; quem decide o destino é o coordinator.
+ */
+sealed interface ExploreEvent {
+    data object SearchRequested : ExploreEvent
+    data object FavoritesRequested : ExploreEvent
+    data class MealSelected(val meal: Meal) : ExploreEvent
+}

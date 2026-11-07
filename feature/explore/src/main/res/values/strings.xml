@@ -1,0 +1,11 @@
+<resources>
+    <string name="explore_title">Tempero</string>
+    <string name="explore_subtitle">What are we cooking today?</string>
+    <string name="explore_search_placeholder">Search recipes</string>
+    <string name="explore_category_all">All</string>
+    <string name="explore_loading">Loading recipes…</string>
+    <string name="explore_empty_title">Nothing found</string>
+    <string name="explore_empty_message">No recipes available right now.</string>
+    <string name="explore_scroll_to_top">Back to top</string>
+    <string name="explore_see_favorites">See my favorites</string>
+</resources>
