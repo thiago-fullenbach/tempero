@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.tempero.android.application)
     alias(libs.plugins.tempero.android.compose)
     alias(libs.plugins.tempero.hilt)
-    alias(libs.plugins.tempero.android.room)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.crashlytics)
@@ -28,10 +27,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField(
-            "String", "MEALDB_API_KEY",
-            "\"${localProperty("MEALDB_API_KEY") ?: System.getenv("MEALDB_API_KEY") ?: "1"}\""
-        )
         // `ANALYTICS_IN_DEBUG=true` no local.properties liga o Analytics em builds de debug.
         buildConfigField(
             "boolean", "ANALYTICS_IN_DEBUG",
@@ -72,16 +67,13 @@ android {
 dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:domain"))
-    testImplementation(testFixtures(project(":core:domain")))
+    implementation(project(":core:data"))
+    implementation(project(":core:analytics"))
+    testImplementation(project(":core:testing"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui.text.google.fonts)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.moshi)
-    implementation(libs.okhttp.logging.interceptor)
-    implementation(libs.moshi)
-    ksp(libs.moshi.kotlin.codegen)
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
     implementation(libs.coil.compose)
@@ -97,7 +89,6 @@ dependencies {
     testImplementation(libs.turbine)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.test.core.ktx)
-    testImplementation(libs.okhttp.mockwebserver)
     testImplementation(libs.hilt.android.testing)
     testImplementation(libs.androidx.paging.testing)
     testImplementation(libs.coil.test)

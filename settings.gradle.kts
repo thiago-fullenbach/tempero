@@ -24,4 +24,10 @@ rootProject.name = "Tempero"
 include(":app")
 include(":core:model")
 include(":core:domain")
+include(":core:common")
+include(":core:network")
+include(":core:database")
+include(":core:data")
+include(":core:analytics")
+include(":core:testing")
  

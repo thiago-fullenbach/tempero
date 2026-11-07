@@ -1,12 +1,16 @@
 package br.com.thiago.tempero.di
 
 import android.content.Context
+import br.com.thiago.tempero.core.analytics.di.AnalyticsModule
+import br.com.thiago.tempero.core.data.di.ConnectivityModule
+import br.com.thiago.tempero.core.data.di.DataSourceModule
+import br.com.thiago.tempero.core.database.di.DatabaseModule
 import androidx.room.Room
-import br.com.thiago.tempero.data.local.MealLocalDataSource
-import br.com.thiago.tempero.data.local.MealLocalDataSourceImpl
-import br.com.thiago.tempero.data.local.TemperoDatabase
-import br.com.thiago.tempero.data.local.dao.FavoriteMealDao
-import br.com.thiago.tempero.data.remote.MealRemoteDataSource
+import br.com.thiago.tempero.core.database.MealLocalDataSource
+import br.com.thiago.tempero.core.database.MealLocalDataSourceImpl
+import br.com.thiago.tempero.core.database.TemperoDatabase
+import br.com.thiago.tempero.core.database.dao.FavoriteMealDao
+import br.com.thiago.tempero.core.network.MealRemoteDataSource
 import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.core.domain.connectivity.ConnectivityObserver
 import br.com.thiago.tempero.core.testing.fake.FakeAnalyticsTracker

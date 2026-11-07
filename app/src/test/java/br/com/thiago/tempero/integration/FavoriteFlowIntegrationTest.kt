@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import br.com.thiago.tempero.data.FavoriteRepositoryImpl
-import br.com.thiago.tempero.data.MealRepositoryImpl
-import br.com.thiago.tempero.data.local.MealLocalDataSourceImpl
-import br.com.thiago.tempero.data.local.TemperoDatabase
+import br.com.thiago.tempero.core.data.FavoriteRepositoryImpl
+import br.com.thiago.tempero.core.data.MealRepositoryImpl
+import br.com.thiago.tempero.core.database.MealLocalDataSourceImpl
+import br.com.thiago.tempero.core.database.TemperoDatabase
 import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
 import br.com.thiago.tempero.core.domain.usecase.GetMealDetailUseCase
 import br.com.thiago.tempero.core.domain.usecase.ToggleFavoriteUseCase
