@@ -1,7 +1,6 @@
 package br.com.thiago.tempero.feature.search
 
 import br.com.thiago.tempero.core.ui.R as UiR
-import br.com.thiago.tempero.feature.search.R
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize

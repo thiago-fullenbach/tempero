@@ -1,7 +1,6 @@
 package br.com.thiago.tempero.feature.explore
 
 import br.com.thiago.tempero.core.ui.R as UiR
-import br.com.thiago.tempero.feature.explore.R
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>MultiLineIfElse:FavoritesViewModel.kt$FavoritesViewModel$FavoritesUiState.Empty(removed)</ID>
+    <ID>MultiLineIfElse:FavoritesViewModel.kt$FavoritesViewModel$FavoritesUiState.Success(meals, removed)</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:FavoritesScreen.kt$Exception()</ID>
+  </CurrentIssues>
+</SmellBaseline>

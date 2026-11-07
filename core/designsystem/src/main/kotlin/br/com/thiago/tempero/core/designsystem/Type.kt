@@ -1,6 +1,5 @@
 package br.com.thiago.tempero.core.designsystem
 
-import br.com.thiago.tempero.core.designsystem.R
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight

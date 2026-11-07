@@ -5,7 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 /** Receitas favoritas, guardadas localmente (funcionam sem internet). */
 interface FavoriteRepository {
-    /** Favoritos ordenados por nome. Falhas do banco chegam como [br.com.thiago.tempero.core.model.DataError.Storage]. */
+    /**
+     * Favoritos ordenados por nome. Falhas do banco chegam como
+     * [br.com.thiago.tempero.core.model.DataError.Storage].
+     */
     fun observeFavorites(): Flow<List<Meal>>
 
     fun observeIsFavorite(id: Long): Flow<Boolean>

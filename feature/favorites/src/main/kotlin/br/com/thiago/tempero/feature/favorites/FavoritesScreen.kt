@@ -2,7 +2,6 @@ package br.com.thiago.tempero.feature.favorites
 
 import br.com.thiago.tempero.core.designsystem.R as DesignsystemR
 import br.com.thiago.tempero.core.ui.R as UiR
-import br.com.thiago.tempero.feature.favorites.R
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets

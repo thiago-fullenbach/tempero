@@ -1,7 +1,6 @@
 package br.com.thiago.tempero.feature.detail
 
 import br.com.thiago.tempero.core.ui.R as UiR
-import br.com.thiago.tempero.feature.detail.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
