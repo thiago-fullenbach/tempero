@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "164462475728",
+    "project_id": "tempero-a1666",
+    "storage_bucket": "tempero-a1666.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164462475728:android:ed1b0d9cef087bfe3e21d5",
+        "android_client_info": {
+          "package_name": "br.com.thiago.tempero"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFAJazNCe5jy0jG6qcJKWCOp72UjycMFA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
