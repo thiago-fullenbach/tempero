@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
 
 /** Barra de navegação inferior (Explorar / Favoritos); o item ativo usa o ícone preenchido. */
 @Composable

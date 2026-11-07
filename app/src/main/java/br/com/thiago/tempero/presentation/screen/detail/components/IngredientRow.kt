@@ -16,8 +16,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.thiago.tempero.core.model.MealIngredient
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
 
 /** Ingrediente com checkbox; a linha inteira é a área de toque (mín. 48dp). Marcado vira riscado. */
 @Composable

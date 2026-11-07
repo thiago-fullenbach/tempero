@@ -1,0 +1,9 @@
+<resources>
+    <string name="common_error_title">No connection</string>
+    <string name="common_error_message">We couldn\'t load the recipes. Check your internet connection and try again.</string>
+    <string name="common_retry">Try again</string>
+    <string name="favorites_offline_banner">You\'re offline. Your favorites are still available.</string>
+    <string name="favorites_remove">Remove from favorites</string>
+    <string name="favorites_add">Add to favorites</string>
+    <string name="search_open_recipe">Open recipe</string>
+</resources>

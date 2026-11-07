@@ -15,8 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
 
 /** Passo do modo de preparo: número em círculo `primaryContainer` e o texto ao lado. */
 @Composable

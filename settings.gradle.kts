@@ -29,5 +29,7 @@ include(":core:network")
 include(":core:database")
 include(":core:data")
 include(":core:analytics")
+include(":core:designsystem")
+include(":core:ui")
 include(":core:testing")
  

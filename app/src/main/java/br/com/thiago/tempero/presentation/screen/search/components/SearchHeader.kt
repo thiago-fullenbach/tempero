@@ -1,5 +1,6 @@
 package br.com.thiago.tempero.presentation.screen.search.components
 
+import br.com.thiago.tempero.R
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,9 +24,8 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.thiago.tempero.R
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
 
 /** Cabeçalho da busca expandida: voltar, campo de texto e limpar. */
 @Composable

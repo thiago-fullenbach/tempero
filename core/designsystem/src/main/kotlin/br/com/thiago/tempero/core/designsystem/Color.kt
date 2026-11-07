@@ -1,4 +1,4 @@
-package br.com.thiago.tempero.presentation.constants
+package br.com.thiago.tempero.core.designsystem
 
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme

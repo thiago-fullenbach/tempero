@@ -1,4 +1,4 @@
-package br.com.thiago.tempero.presentation.preview
+package br.com.thiago.tempero.core.ui.preview
 
 import br.com.thiago.tempero.core.model.Meal
 import br.com.thiago.tempero.core.model.MealCategory

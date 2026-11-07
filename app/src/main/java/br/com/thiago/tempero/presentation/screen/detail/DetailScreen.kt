@@ -1,5 +1,7 @@
 package br.com.thiago.tempero.presentation.screen.detail
 
+import br.com.thiago.tempero.R
+import br.com.thiago.tempero.core.ui.R as UiR
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,13 +36,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.thiago.tempero.R
 import br.com.thiago.tempero.core.model.DataError
 import br.com.thiago.tempero.core.model.Meal
-import br.com.thiago.tempero.presentation.components.StateMessage
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
-import br.com.thiago.tempero.presentation.preview.PreviewData
+import br.com.thiago.tempero.core.ui.components.StateMessage
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
+import br.com.thiago.tempero.core.ui.preview.PreviewData
 import br.com.thiago.tempero.presentation.screen.detail.components.DetailHeader
 import br.com.thiago.tempero.presentation.screen.detail.components.DetailHero
 import br.com.thiago.tempero.presentation.screen.detail.components.IngredientRow
@@ -74,11 +75,11 @@ fun DetailScreen(
                 is DetailUiState.Error -> StateContent(onBackClick = onBackClick) {
                     StateMessage(
                         icon = Icons.Default.Warning,
-                        title = stringResource(R.string.explore_error_title),
-                        message = stringResource(R.string.explore_error_message),
+                        title = stringResource(UiR.string.common_error_title),
+                        message = stringResource(UiR.string.common_error_message),
                         iconColor = MaterialTheme.colorScheme.error,
                         iconBackground = MaterialTheme.colorScheme.errorContainer,
-                        actionLabel = stringResource(R.string.explore_retry),
+                        actionLabel = stringResource(UiR.string.common_retry),
                         onActionClick = onRetry
                     )
                 }

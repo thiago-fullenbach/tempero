@@ -1,12 +1,12 @@
-package br.com.thiago.tempero.presentation.constants
+package br.com.thiago.tempero.core.designsystem
 
+import br.com.thiago.tempero.core.designsystem.R
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.googlefonts.Font
 import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.unit.sp
-import br.com.thiago.tempero.R
 
 // Dependência: androidx.compose.ui:ui-text-google-fonts
 private val provider = GoogleFont.Provider(

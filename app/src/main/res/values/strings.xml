@@ -5,9 +5,6 @@
     <string name="explore_search_placeholder">Search recipes</string>
     <string name="explore_category_all">All</string>
     <string name="explore_loading">Loading recipes…</string>
-    <string name="explore_error_title">No connection</string>
-    <string name="explore_error_message">We couldn\'t load the recipes. Check your internet connection and try again.</string>
-    <string name="explore_retry">Try again</string>
     <string name="explore_empty_title">Nothing found</string>
     <string name="explore_empty_message">No recipes available right now.</string>
     <string name="explore_scroll_to_top">Back to top</string>
@@ -19,7 +16,6 @@
     <string name="search_empty_title">Nothing found</string>
     <string name="search_empty_message">No recipes for “%1$s”. Try the English name or another word.</string>
     <string name="search_explore_categories">Explore categories</string>
-    <string name="search_open_recipe">Open recipe</string>
     <string-array name="search_suggestions">
         <item>chicken</item>
         <item>pasta</item>
@@ -31,14 +27,11 @@
     <string name="nav_explore">Explore</string>
     <string name="nav_favorites">Favorites</string>
     <string name="favorites_title">Favorites</string>
-    <string name="favorites_offline_banner">You\'re offline. Your favorites are still available.</string>
     <string name="favorites_empty_title">No favorites yet</string>
     <string name="favorites_empty_message">Tap the heart on a recipe to save it here. It stays available even without internet.</string>
     <string name="favorites_explore_recipes">Explore recipes</string>
     <string name="favorites_removed">Recipe removed</string>
     <string name="favorites_undo">Undo</string>
-    <string name="favorites_remove">Remove from favorites</string>
-    <string name="favorites_add">Add to favorites</string>
     <string name="detail_back">Back</string>
     <string name="detail_ingredients">Ingredients</string>
     <string name="detail_ingredients_progress">%1$d of %2$d</string>

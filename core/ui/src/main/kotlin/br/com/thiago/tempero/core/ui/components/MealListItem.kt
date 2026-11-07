@@ -1,5 +1,6 @@
-package br.com.thiago.tempero.presentation.components
+package br.com.thiago.tempero.core.ui.components
 
+import br.com.thiago.tempero.core.ui.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
@@ -19,10 +20,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.thiago.tempero.R
 import br.com.thiago.tempero.core.model.Meal
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
-import br.com.thiago.tempero.presentation.preview.PreviewData
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
+import br.com.thiago.tempero.core.ui.preview.PreviewData
 import coil.compose.AsyncImage
 
 /**

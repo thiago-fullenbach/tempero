@@ -1,5 +1,7 @@
 package br.com.thiago.tempero.presentation.screen.explore
 
+import br.com.thiago.tempero.R
+import br.com.thiago.tempero.core.ui.R as UiR
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -44,14 +46,13 @@ import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
-import br.com.thiago.tempero.R
 import br.com.thiago.tempero.core.model.DataError
 import br.com.thiago.tempero.core.model.Meal
 import br.com.thiago.tempero.core.model.MealCategory
-import br.com.thiago.tempero.presentation.components.StateMessage
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
-import br.com.thiago.tempero.presentation.preview.PreviewData
+import br.com.thiago.tempero.core.ui.components.StateMessage
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
+import br.com.thiago.tempero.core.ui.preview.PreviewData
 import br.com.thiago.tempero.presentation.screen.explore.components.CategoryChips
 import br.com.thiago.tempero.presentation.screen.explore.components.ExploreHeader
 import br.com.thiago.tempero.presentation.screen.explore.components.ExploreSearchButton
@@ -110,11 +111,11 @@ fun ExploreScreen(
                     // Falha ao carregar as categorias: não há filtro nem lista para mostrar.
                     is ExploreUiState.Error -> StateMessage(
                         icon = Icons.Default.Warning,
-                        title = stringResource(R.string.explore_error_title),
-                        message = stringResource(R.string.explore_error_message),
+                        title = stringResource(UiR.string.common_error_title),
+                        message = stringResource(UiR.string.common_error_message),
                         iconColor = MaterialTheme.colorScheme.error,
                         iconBackground = MaterialTheme.colorScheme.errorContainer,
-                        actionLabel = stringResource(R.string.explore_retry),
+                        actionLabel = stringResource(UiR.string.common_retry),
                         onActionClick = onRetry,
                         secondaryActionLabel = stringResource(R.string.explore_see_favorites),
                         onSecondaryActionClick = onFavoritesClick
@@ -140,11 +141,11 @@ fun ExploreScreen(
                                 hasRefreshError -> item(span = FullWidth) {
                                     StateMessage(
                                         icon = Icons.Default.Warning,
-                                        title = stringResource(R.string.explore_error_title),
-                                        message = stringResource(R.string.explore_error_message),
+                                        title = stringResource(UiR.string.common_error_title),
+                                        message = stringResource(UiR.string.common_error_message),
                                         iconColor = MaterialTheme.colorScheme.error,
                                         iconBackground = MaterialTheme.colorScheme.errorContainer,
-                                        actionLabel = stringResource(R.string.explore_retry),
+                                        actionLabel = stringResource(UiR.string.common_retry),
                                         onActionClick = meals::retry,
                                         secondaryActionLabel = stringResource(R.string.explore_see_favorites),
                                         onSecondaryActionClick = onFavoritesClick
@@ -222,7 +223,7 @@ private fun AppendFooter(
     when (state) {
         is LoadState.Loading -> LoadingIndicator(modifier)
         is LoadState.Error -> Box(modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-            TextButton(onClick = onRetry) { Text(stringResource(R.string.explore_retry)) }
+            TextButton(onClick = onRetry) { Text(stringResource(UiR.string.common_retry)) }
         }
         is LoadState.NotLoading -> Unit
     }

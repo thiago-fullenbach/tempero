@@ -1,5 +1,6 @@
 package br.com.thiago.tempero.presentation.screen.search.components
 
+import br.com.thiago.tempero.R
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -8,9 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.thiago.tempero.R
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
 
 @Composable
 fun SearchResultsCount(count: Int, modifier: Modifier = Modifier) {

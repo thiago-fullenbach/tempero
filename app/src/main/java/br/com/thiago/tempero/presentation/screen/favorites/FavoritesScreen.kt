@@ -1,5 +1,8 @@
 package br.com.thiago.tempero.presentation.screen.favorites
 
+import br.com.thiago.tempero.R
+import br.com.thiago.tempero.core.designsystem.R as DesignsystemR
+import br.com.thiago.tempero.core.ui.R as UiR
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -27,16 +30,15 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.thiago.tempero.R
 import br.com.thiago.tempero.core.model.DataError
 import br.com.thiago.tempero.core.model.Meal
-import br.com.thiago.tempero.presentation.components.FavoriteButton
-import br.com.thiago.tempero.presentation.components.MealListItem
-import br.com.thiago.tempero.presentation.components.OfflineBanner
-import br.com.thiago.tempero.presentation.components.StateMessage
-import br.com.thiago.tempero.presentation.constants.Spacing
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
-import br.com.thiago.tempero.presentation.preview.PreviewData
+import br.com.thiago.tempero.core.ui.components.FavoriteButton
+import br.com.thiago.tempero.core.ui.components.MealListItem
+import br.com.thiago.tempero.core.ui.components.OfflineBanner
+import br.com.thiago.tempero.core.ui.components.StateMessage
+import br.com.thiago.tempero.core.designsystem.Spacing
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
+import br.com.thiago.tempero.core.ui.preview.PreviewData
 import br.com.thiago.tempero.presentation.screen.favorites.components.FavoritesTopBar
 
 /**
@@ -85,7 +87,7 @@ fun FavoritesScreen(
 
             if (isOffline && (uiState is FavoritesUiState.Success || uiState is FavoritesUiState.Empty)) {
                 OfflineBanner(
-                    message = stringResource(R.string.favorites_offline_banner),
+                    message = stringResource(UiR.string.favorites_offline_banner),
                     modifier = Modifier.padding(start = Spacing.lg, end = Spacing.lg, bottom = Spacing.sm)
                 )
             }
@@ -100,16 +102,16 @@ fun FavoritesScreen(
 
                 is FavoritesUiState.Error -> StateMessage(
                     icon = Icons.Default.Warning,
-                    title = stringResource(R.string.explore_error_title),
-                    message = stringResource(R.string.explore_error_message),
+                    title = stringResource(UiR.string.common_error_title),
+                    message = stringResource(UiR.string.common_error_message),
                     iconColor = MaterialTheme.colorScheme.error,
                     iconBackground = MaterialTheme.colorScheme.errorContainer,
-                    actionLabel = stringResource(R.string.explore_retry),
+                    actionLabel = stringResource(UiR.string.common_retry),
                     onActionClick = onRetry
                 )
 
                 is FavoritesUiState.Empty -> StateMessage(
-                    icon = ImageVector.vectorResource(R.drawable.ic_favorite_filled),
+                    icon = ImageVector.vectorResource(DesignsystemR.drawable.ic_favorite_filled),
                     title = stringResource(R.string.favorites_empty_title),
                     message = stringResource(R.string.favorites_empty_message),
                     iconColor = MaterialTheme.colorScheme.primary,

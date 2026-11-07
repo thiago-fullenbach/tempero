@@ -1,4 +1,4 @@
-package br.com.thiago.tempero.presentation.constants
+package br.com.thiago.tempero.core.designsystem
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

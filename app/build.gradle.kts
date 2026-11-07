@@ -69,6 +69,8 @@ dependencies {
     implementation(project(":core:domain"))
     implementation(project(":core:data"))
     implementation(project(":core:analytics"))
+    implementation(project(":core:designsystem"))
+    implementation(project(":core:ui"))
     testImplementation(project(":core:testing"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

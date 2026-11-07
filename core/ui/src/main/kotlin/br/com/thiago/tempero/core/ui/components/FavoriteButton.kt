@@ -1,5 +1,7 @@
-package br.com.thiago.tempero.presentation.components
+package br.com.thiago.tempero.core.ui.components
 
+import br.com.thiago.tempero.core.designsystem.R as DesignsystemR
+import br.com.thiago.tempero.core.ui.R
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonColors
@@ -12,8 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
-import br.com.thiago.tempero.R
-import br.com.thiago.tempero.presentation.constants.TemperoTheme
+import br.com.thiago.tempero.core.designsystem.TemperoTheme
 
 /**
  * Coração de favorito: preenchido em `primary` quando favorito, contorno em
@@ -31,7 +32,7 @@ fun FavoriteButton(
     IconButton(onClick = onClick, modifier = modifier, colors = colors) {
         Icon(
             imageVector = ImageVector.vectorResource(
-                if (isFavorite) R.drawable.ic_favorite_filled else R.drawable.ic_favorite
+                if (isFavorite) DesignsystemR.drawable.ic_favorite_filled else DesignsystemR.drawable.ic_favorite
             ),
             contentDescription = stringResource(
                 if (isFavorite) R.string.favorites_remove else R.string.favorites_add
