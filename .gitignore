@@ -12,3 +12,6 @@ local.properties
 # Keystores de release (nunca versionar)
 *.jks
 *.keystore
+
+# Saída de build do build-logic
+build-logic/**/build/
