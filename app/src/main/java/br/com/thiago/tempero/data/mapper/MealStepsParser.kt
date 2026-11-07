@@ -1,6 +1,6 @@
 package br.com.thiago.tempero.data.mapper
 
-import br.com.thiago.tempero.domain.model.MealStep
+import br.com.thiago.tempero.core.model.MealStep
 
 /** Tamanho máximo (em caracteres) ao juntar frases num mesmo passo. Uma frase maior que isso fica sozinha. */
 private const val MAX_STEP_LENGTH = 250

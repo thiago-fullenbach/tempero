@@ -3,10 +3,10 @@ package br.com.thiago.tempero.presentation.viewmodel
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.repository.MealRepository
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.domain.repository.MealRepository
 import br.com.thiago.tempero.presentation.screen.search.SearchIntent
 import br.com.thiago.tempero.presentation.screen.search.SearchUiState
 import dagger.hilt.android.lifecycle.HiltViewModel

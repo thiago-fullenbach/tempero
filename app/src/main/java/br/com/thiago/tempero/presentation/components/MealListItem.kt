@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.thiago.tempero.R
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.Meal
 import br.com.thiago.tempero.presentation.constants.TemperoTheme
 import br.com.thiago.tempero.presentation.preview.PreviewData
 import coil.compose.AsyncImage

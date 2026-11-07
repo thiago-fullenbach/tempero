@@ -1,15 +1,15 @@
 package br.com.thiago.tempero.presentation.viewmodel
 
 import androidx.paging.testing.asSnapshot
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.fake.FakeAnalyticsTracker
-import br.com.thiago.tempero.fake.FakeMealRepository
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.testing.fake.FakeAnalyticsTracker
+import br.com.thiago.tempero.core.testing.fake.FakeMealRepository
 import br.com.thiago.tempero.presentation.screen.explore.ExploreIntent
 import br.com.thiago.tempero.presentation.screen.explore.ExploreUiState
-import br.com.thiago.tempero.testutil.MainDispatcherRule
-import br.com.thiago.tempero.testutil.meal
+import br.com.thiago.tempero.core.testing.util.MainDispatcherRule
+import br.com.thiago.tempero.core.testing.util.meal
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

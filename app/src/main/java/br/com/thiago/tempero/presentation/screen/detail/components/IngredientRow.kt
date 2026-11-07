@@ -15,7 +15,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.thiago.tempero.domain.model.MealIngredient
+import br.com.thiago.tempero.core.model.MealIngredient
 import br.com.thiago.tempero.presentation.constants.Spacing
 import br.com.thiago.tempero.presentation.constants.TemperoTheme
 
@@ -46,9 +46,9 @@ fun IngredientRow(
                 .weight(1f)
                 .padding(start = Spacing.xs)
         )
-        if (ingredient.measure != null) {
+        ingredient.measure?.let { measure ->
             Text(
-                text = ingredient.measure,
+                text = measure,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

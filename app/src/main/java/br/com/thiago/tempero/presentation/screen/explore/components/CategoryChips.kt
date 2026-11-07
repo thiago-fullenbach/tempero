@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.thiago.tempero.R
-import br.com.thiago.tempero.domain.model.MealCategory
+import br.com.thiago.tempero.core.model.MealCategory
 import br.com.thiago.tempero.presentation.constants.Spacing
 import br.com.thiago.tempero.presentation.constants.TemperoTheme
 import br.com.thiago.tempero.presentation.preview.PreviewData

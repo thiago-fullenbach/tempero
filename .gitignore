@@ -13,5 +13,6 @@ local.properties
 *.jks
 *.keystore
 
-# Saída de build do build-logic
-build-logic/**/build/
+# Saída de build de todos os módulos
+**/build/
+.kotlin/

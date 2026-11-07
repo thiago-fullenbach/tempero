@@ -2,7 +2,7 @@ package br.com.thiago.tempero.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import br.com.thiago.tempero.domain.model.MealIngredient
+import br.com.thiago.tempero.core.model.MealIngredient
 
 /** Receita favorita. Guarda todos os campos de `Meal` para o detalhe funcionar offline. */
 @Entity(tableName = "favorite_meals")

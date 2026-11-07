@@ -1,7 +1,7 @@
 package br.com.thiago.tempero.data.local.converter
 
 import androidx.room.TypeConverter
-import br.com.thiago.tempero.domain.model.MealIngredient
+import br.com.thiago.tempero.core.model.MealIngredient
 import com.squareup.moshi.JsonClass
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types

@@ -1,8 +1,8 @@
 package br.com.thiago.tempero.data.analytics
 
 import android.os.Bundle
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
 import com.google.firebase.analytics.FirebaseAnalytics
 import jakarta.inject.Inject
 import jakarta.inject.Singleton

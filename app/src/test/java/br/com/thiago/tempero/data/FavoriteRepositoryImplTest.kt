@@ -1,10 +1,10 @@
 package br.com.thiago.tempero.data
 
 import br.com.thiago.tempero.data.local.mapper.toEntity
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.fake.FakeMealLocalDataSource
-import br.com.thiago.tempero.testutil.assertFails
-import br.com.thiago.tempero.testutil.completeMeal
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.testing.fake.FakeMealLocalDataSource
+import br.com.thiago.tempero.core.testing.util.assertFails
+import br.com.thiago.tempero.core.testing.util.completeMeal
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestScope

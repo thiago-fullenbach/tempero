@@ -1,10 +1,10 @@
 package br.com.thiago.tempero.data.local.mapper
 
 import br.com.thiago.tempero.data.local.entity.FavoriteMealEntity
-import br.com.thiago.tempero.domain.model.MealIngredient
-import br.com.thiago.tempero.domain.model.MealStep
-import br.com.thiago.tempero.testutil.completeMeal
-import br.com.thiago.tempero.testutil.meal
+import br.com.thiago.tempero.core.model.MealIngredient
+import br.com.thiago.tempero.core.model.MealStep
+import br.com.thiago.tempero.core.testing.util.completeMeal
+import br.com.thiago.tempero.core.testing.util.meal
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

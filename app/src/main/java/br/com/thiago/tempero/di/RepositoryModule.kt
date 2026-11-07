@@ -2,8 +2,8 @@ package br.com.thiago.tempero.di
 
 import br.com.thiago.tempero.data.FavoriteRepositoryImpl
 import br.com.thiago.tempero.data.MealRepositoryImpl
-import br.com.thiago.tempero.domain.repository.FavoriteRepository
-import br.com.thiago.tempero.domain.repository.MealRepository
+import br.com.thiago.tempero.core.domain.repository.FavoriteRepository
+import br.com.thiago.tempero.core.domain.repository.MealRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

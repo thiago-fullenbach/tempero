@@ -1,9 +1,9 @@
 package br.com.thiago.tempero.presentation.preview
 
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.domain.model.MealIngredient
-import br.com.thiago.tempero.domain.model.MealStep
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.model.MealIngredient
+import br.com.thiago.tempero.core.model.MealStep
 
 /** Dados de exemplo usados apenas pelos `@Preview`. */
 object PreviewData {

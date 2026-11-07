@@ -10,9 +10,9 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
+import br.com.thiago.tempero.core.model.Meal
 import br.com.thiago.tempero.presentation.screen.detail.DetailEvent
 import br.com.thiago.tempero.presentation.screen.explore.ExploreEvent
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesEvent

@@ -1,7 +1,7 @@
 package br.com.thiago.tempero.presentation.screen.favorites
 
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.Meal
 
 sealed interface FavoritesUiState {
     data object Loading : FavoritesUiState

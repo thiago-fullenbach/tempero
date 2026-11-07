@@ -2,8 +2,8 @@ package br.com.thiago.tempero.data.local.mapper
 
 import br.com.thiago.tempero.data.local.entity.FavoriteMealEntity
 import br.com.thiago.tempero.data.mapper.toMealSteps
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
 
 fun Meal.toEntity(savedAt: Long): FavoriteMealEntity = FavoriteMealEntity(
     id = id,

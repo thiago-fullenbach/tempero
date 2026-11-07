@@ -2,9 +2,9 @@ package br.com.thiago.tempero.data.remote.mapper
 
 import br.com.thiago.tempero.data.mapper.toMealSteps
 import br.com.thiago.tempero.data.remote.dto.MealDto
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.domain.model.MealIngredient
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.model.MealIngredient
 import timber.log.Timber
 
 /**

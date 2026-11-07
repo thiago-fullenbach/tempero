@@ -1,14 +1,14 @@
 package br.com.thiago.tempero.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.fake.FakeAnalyticsTracker
-import br.com.thiago.tempero.fake.FakeMealRepository
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.testing.fake.FakeAnalyticsTracker
+import br.com.thiago.tempero.core.testing.fake.FakeMealRepository
 import br.com.thiago.tempero.presentation.screen.search.SearchIntent
 import br.com.thiago.tempero.presentation.screen.search.SearchUiState
-import br.com.thiago.tempero.testutil.MainDispatcherRule
-import br.com.thiago.tempero.testutil.meal
+import br.com.thiago.tempero.core.testing.util.MainDispatcherRule
+import br.com.thiago.tempero.core.testing.util.meal
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceTimeBy

@@ -22,4 +22,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Tempero"
 include(":app")
+include(":core:model")
+include(":core:domain")
  

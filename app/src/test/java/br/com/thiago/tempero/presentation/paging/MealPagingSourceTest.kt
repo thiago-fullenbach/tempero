@@ -2,9 +2,9 @@ package br.com.thiago.tempero.presentation.paging
 
 import androidx.paging.PagingSource.LoadParams
 import androidx.paging.PagingSource.LoadResult
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.testutil.meal
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.testing.util.meal
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.Meal
 import br.com.thiago.tempero.presentation.constants.Spacing
 import br.com.thiago.tempero.presentation.constants.TemperoTheme
 import br.com.thiago.tempero.presentation.preview.PreviewData

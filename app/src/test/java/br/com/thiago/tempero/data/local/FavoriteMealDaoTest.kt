@@ -6,9 +6,9 @@ import androidx.test.core.app.ApplicationProvider
 import app.cash.turbine.test
 import br.com.thiago.tempero.data.local.dao.FavoriteMealDao
 import br.com.thiago.tempero.data.local.mapper.toEntity
-import br.com.thiago.tempero.domain.model.MealIngredient
-import br.com.thiago.tempero.testutil.completeMeal
-import br.com.thiago.tempero.testutil.meal
+import br.com.thiago.tempero.core.model.MealIngredient
+import br.com.thiago.tempero.core.testing.util.completeMeal
+import br.com.thiago.tempero.core.testing.util.meal
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Assert.assertEquals

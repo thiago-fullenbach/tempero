@@ -1,15 +1,15 @@
 package br.com.thiago.tempero.presentation.viewmodel
 
 import app.cash.turbine.test
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.fake.FakeAnalyticsTracker
-import br.com.thiago.tempero.fake.FakeConnectivityObserver
-import br.com.thiago.tempero.fake.FakeFavoriteRepository
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.testing.fake.FakeAnalyticsTracker
+import br.com.thiago.tempero.core.testing.fake.FakeConnectivityObserver
+import br.com.thiago.tempero.core.testing.fake.FakeFavoriteRepository
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesIntent
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesUiState
-import br.com.thiago.tempero.testutil.MainDispatcherRule
-import br.com.thiago.tempero.testutil.completeMeal
+import br.com.thiago.tempero.core.testing.util.MainDispatcherRule
+import br.com.thiago.tempero.core.testing.util.completeMeal
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

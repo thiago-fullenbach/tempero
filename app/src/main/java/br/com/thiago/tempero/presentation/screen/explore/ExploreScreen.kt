@@ -45,9 +45,9 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import br.com.thiago.tempero.R
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
 import br.com.thiago.tempero.presentation.components.StateMessage
 import br.com.thiago.tempero.presentation.constants.Spacing
 import br.com.thiago.tempero.presentation.constants.TemperoTheme

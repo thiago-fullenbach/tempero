@@ -7,11 +7,11 @@ import br.com.thiago.tempero.data.local.MealLocalDataSourceImpl
 import br.com.thiago.tempero.data.local.TemperoDatabase
 import br.com.thiago.tempero.data.local.dao.FavoriteMealDao
 import br.com.thiago.tempero.data.remote.MealRemoteDataSource
-import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
-import br.com.thiago.tempero.domain.connectivity.ConnectivityObserver
-import br.com.thiago.tempero.fake.FakeAnalyticsTracker
-import br.com.thiago.tempero.fake.FakeConnectivityObserver
-import br.com.thiago.tempero.fake.FakeMealRemoteDataSource
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
+import br.com.thiago.tempero.core.domain.connectivity.ConnectivityObserver
+import br.com.thiago.tempero.core.testing.fake.FakeAnalyticsTracker
+import br.com.thiago.tempero.core.testing.fake.FakeConnectivityObserver
+import br.com.thiago.tempero.core.testing.fake.FakeMealRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.components.SingletonComponent

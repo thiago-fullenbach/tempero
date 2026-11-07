@@ -1,11 +1,11 @@
 package br.com.thiago.tempero.data
 
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.fake.FakeMealRemoteDataSource
-import br.com.thiago.tempero.testutil.assertFails
-import br.com.thiago.tempero.testutil.categoryDto
-import br.com.thiago.tempero.testutil.mealDto
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.testing.fake.FakeMealRemoteDataSource
+import br.com.thiago.tempero.core.testing.util.assertFails
+import br.com.thiago.tempero.core.testing.util.categoryDto
+import br.com.thiago.tempero.core.testing.util.mealDto
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonEncodingException
 import kotlinx.coroutines.ExperimentalCoroutinesApi

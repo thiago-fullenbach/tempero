@@ -2,12 +2,12 @@ package br.com.thiago.tempero.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
-import br.com.thiago.tempero.domain.connectivity.ConnectivityObserver
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.repository.FavoriteRepository
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
+import br.com.thiago.tempero.core.domain.connectivity.ConnectivityObserver
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.domain.repository.FavoriteRepository
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesIntent
 import br.com.thiago.tempero.presentation.screen.favorites.FavoritesUiState
 import dagger.hilt.android.lifecycle.HiltViewModel

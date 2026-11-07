@@ -1,7 +1,7 @@
 package br.com.thiago.tempero.di
 
 import br.com.thiago.tempero.data.connectivity.AndroidConnectivityObserver
-import br.com.thiago.tempero.domain.connectivity.ConnectivityObserver
+import br.com.thiago.tempero.core.domain.connectivity.ConnectivityObserver
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,6 +1,6 @@
 package br.com.thiago.tempero.data.local.converter
 
-import br.com.thiago.tempero.domain.model.MealIngredient
+import br.com.thiago.tempero.core.model.MealIngredient
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

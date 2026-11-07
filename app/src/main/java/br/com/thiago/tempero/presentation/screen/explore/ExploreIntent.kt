@@ -1,6 +1,6 @@
 package br.com.thiago.tempero.presentation.screen.explore
 
-import br.com.thiago.tempero.domain.model.MealCategory
+import br.com.thiago.tempero.core.model.MealCategory
 
 sealed interface ExploreIntent {
     object Retry: ExploreIntent

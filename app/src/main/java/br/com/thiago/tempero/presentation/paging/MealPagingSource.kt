@@ -2,8 +2,8 @@ package br.com.thiago.tempero.presentation.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
 
 class MealPagingSource(
     private val selectedCategory: MealCategory? = null,

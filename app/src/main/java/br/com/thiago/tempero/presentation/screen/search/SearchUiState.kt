@@ -1,7 +1,7 @@
 package br.com.thiago.tempero.presentation.screen.search
 
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.Meal
 
 sealed interface SearchUiState {
     /** Campo vazio: categorias e sugestões fixas, sem chamadas à API. */

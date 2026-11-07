@@ -4,10 +4,10 @@ import br.com.thiago.tempero.data.remote.MealRemoteDataSource
 import br.com.thiago.tempero.data.remote.mapper.toDomain
 import br.com.thiago.tempero.di.DefaultDispatcher
 import br.com.thiago.tempero.di.IoDispatcher
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.Meal
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.domain.repository.MealRepository
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.Meal
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.domain.repository.MealRepository
 import com.squareup.moshi.JsonDataException
 import com.squareup.moshi.JsonEncodingException
 import jakarta.inject.Inject

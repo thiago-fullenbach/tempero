@@ -1,4 +1,4 @@
-package br.com.thiago.tempero.fake
+package br.com.thiago.tempero.core.testing.fake
 
 import br.com.thiago.tempero.data.local.MealLocalDataSource
 import br.com.thiago.tempero.data.local.entity.FavoriteMealEntity

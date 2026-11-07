@@ -12,9 +12,9 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
-import br.com.thiago.tempero.fake.FakeMealRemoteDataSource
-import br.com.thiago.tempero.testutil.categoryDto
-import br.com.thiago.tempero.testutil.mealDto
+import br.com.thiago.tempero.core.testing.fake.FakeMealRemoteDataSource
+import br.com.thiago.tempero.core.testing.util.categoryDto
+import br.com.thiago.tempero.core.testing.util.mealDto
 import coil.Coil
 import coil.ImageLoader
 import coil.annotation.ExperimentalCoilApi

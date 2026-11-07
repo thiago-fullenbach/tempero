@@ -6,9 +6,9 @@ import androidx.test.core.app.ApplicationProvider
 import app.cash.turbine.test
 import br.com.thiago.tempero.data.local.MealLocalDataSourceImpl
 import br.com.thiago.tempero.data.local.TemperoDatabase
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.testutil.assertFails
-import br.com.thiago.tempero.testutil.completeMeal
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.testing.util.assertFails
+import br.com.thiago.tempero.core.testing.util.completeMeal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import org.junit.After

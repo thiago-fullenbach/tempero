@@ -1,6 +1,6 @@
 package br.com.thiago.tempero.presentation.screen.favorites
 
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.Meal
 
 sealed interface FavoritesIntent {
     data class Remove(val meal: Meal) : FavoritesIntent

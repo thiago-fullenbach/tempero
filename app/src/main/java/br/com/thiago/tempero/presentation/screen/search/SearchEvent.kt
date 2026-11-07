@@ -1,6 +1,6 @@
 package br.com.thiago.tempero.presentation.screen.search
 
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.Meal
 
 /**
  * Eventos que a tela Busca emite para fora dela. Descrevem o que o usuário fez,

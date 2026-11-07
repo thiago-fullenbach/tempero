@@ -2,11 +2,11 @@ package br.com.thiago.tempero.data.remote
 
 import br.com.thiago.tempero.data.MealRepositoryImpl
 import br.com.thiago.tempero.data.remote.api.TheMealDBAPI
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.domain.model.MealIngredient
-import br.com.thiago.tempero.testutil.assertFails
-import br.com.thiago.tempero.testutil.readFixture
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.model.MealIngredient
+import br.com.thiago.tempero.core.testing.util.assertFails
+import br.com.thiago.tempero.core.testing.util.readFixture
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher

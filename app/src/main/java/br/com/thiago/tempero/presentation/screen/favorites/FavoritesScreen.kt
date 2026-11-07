@@ -28,8 +28,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.thiago.tempero.R
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.model.Meal
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.model.Meal
 import br.com.thiago.tempero.presentation.components.FavoriteButton
 import br.com.thiago.tempero.presentation.components.MealListItem
 import br.com.thiago.tempero.presentation.components.OfflineBanner

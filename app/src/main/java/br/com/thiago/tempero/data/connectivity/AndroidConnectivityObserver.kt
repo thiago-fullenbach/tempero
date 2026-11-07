@@ -4,7 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
-import br.com.thiago.tempero.domain.connectivity.ConnectivityObserver
+import br.com.thiago.tempero.core.domain.connectivity.ConnectivityObserver
 import dagger.hilt.android.qualifiers.ApplicationContext
 import jakarta.inject.Inject
 import kotlinx.coroutines.channels.awaitClose

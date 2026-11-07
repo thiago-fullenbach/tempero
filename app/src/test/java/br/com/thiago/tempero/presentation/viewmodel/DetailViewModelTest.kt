@@ -1,17 +1,17 @@
 package br.com.thiago.tempero.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
-import br.com.thiago.tempero.domain.analytics.AnalyticsEvent
-import br.com.thiago.tempero.domain.error.DataError
-import br.com.thiago.tempero.domain.usecase.GetMealDetailUseCase
-import br.com.thiago.tempero.domain.usecase.ToggleFavoriteUseCase
-import br.com.thiago.tempero.fake.FakeAnalyticsTracker
-import br.com.thiago.tempero.fake.FakeFavoriteRepository
-import br.com.thiago.tempero.fake.FakeMealRepository
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
+import br.com.thiago.tempero.core.model.DataError
+import br.com.thiago.tempero.core.domain.usecase.GetMealDetailUseCase
+import br.com.thiago.tempero.core.domain.usecase.ToggleFavoriteUseCase
+import br.com.thiago.tempero.core.testing.fake.FakeAnalyticsTracker
+import br.com.thiago.tempero.core.testing.fake.FakeFavoriteRepository
+import br.com.thiago.tempero.core.testing.fake.FakeMealRepository
 import br.com.thiago.tempero.presentation.screen.detail.DetailIntent
 import br.com.thiago.tempero.presentation.screen.detail.DetailUiState
-import br.com.thiago.tempero.testutil.MainDispatcherRule
-import br.com.thiago.tempero.testutil.completeMeal
+import br.com.thiago.tempero.core.testing.util.MainDispatcherRule
+import br.com.thiago.tempero.core.testing.util.completeMeal
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule

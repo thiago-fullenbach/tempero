@@ -2,7 +2,7 @@ package br.com.thiago.tempero.data.remote.mapper
 
 import br.com.thiago.tempero.data.remote.dto.CategoryDto
 import br.com.thiago.tempero.data.remote.dto.CategoryNameDto
-import br.com.thiago.tempero.domain.model.MealCategory
+import br.com.thiago.tempero.core.model.MealCategory
 
 fun CategoryNameDto.toDomain(): MealCategory = MealCategory(strCategory.trim())
 

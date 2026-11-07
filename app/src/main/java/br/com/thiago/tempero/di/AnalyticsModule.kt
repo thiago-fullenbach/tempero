@@ -2,7 +2,7 @@ package br.com.thiago.tempero.di
 
 import android.content.Context
 import br.com.thiago.tempero.data.analytics.FirebaseAnalyticsTracker
-import br.com.thiago.tempero.domain.analytics.AnalyticsTracker
+import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
 import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.Binds
 import dagger.Module

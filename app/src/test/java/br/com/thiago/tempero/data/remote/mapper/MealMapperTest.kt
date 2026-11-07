@@ -1,8 +1,8 @@
 package br.com.thiago.tempero.data.remote.mapper
 
-import br.com.thiago.tempero.domain.model.MealCategory
-import br.com.thiago.tempero.domain.model.MealIngredient
-import br.com.thiago.tempero.testutil.mealDto
+import br.com.thiago.tempero.core.model.MealCategory
+import br.com.thiago.tempero.core.model.MealIngredient
+import br.com.thiago.tempero.core.testing.util.mealDto
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
