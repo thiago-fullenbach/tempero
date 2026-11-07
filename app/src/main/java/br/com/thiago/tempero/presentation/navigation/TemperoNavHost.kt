@@ -13,13 +13,14 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
-import br.com.thiago.tempero.presentation.screen.detail.DetailRoute
-import br.com.thiago.tempero.presentation.screen.explore.ExploreRoute
-import br.com.thiago.tempero.presentation.screen.favorites.FavoritesRoute
-import br.com.thiago.tempero.presentation.screen.search.SearchRoute
+import br.com.thiago.tempero.feature.detail.navigation.detailScreen
+import br.com.thiago.tempero.feature.explore.navigation.ExploreRoute
+import br.com.thiago.tempero.feature.explore.navigation.exploreScreen
+import br.com.thiago.tempero.feature.favorites.navigation.FavoritesRoute
+import br.com.thiago.tempero.feature.favorites.navigation.favoritesScreen
+import br.com.thiago.tempero.feature.search.navigation.searchScreen
 
 /**
  * Grafo de navegação do app; toda decisão de destino passa pelo [coordinator].
@@ -52,7 +53,7 @@ fun TemperoNavHost(
     ) { innerPadding ->
         NavHost(
             navController = coordinator.navController,
-            startDestination = TemperoDestination.Explore,
+            startDestination = ExploreRoute,
             enterTransition = { fadeIn() },
             exitTransition = { fadeOut() },
             popEnterTransition = { fadeIn() },
@@ -61,23 +62,15 @@ fun TemperoNavHost(
                 .padding(innerPadding)
                 .consumeWindowInsets(innerPadding)
         ) {
-            composable<TemperoDestination.Explore> {
-                ExploreRoute(onEvent = coordinator::onEvent)
-            }
-            composable<TemperoDestination.Search> {
-                SearchRoute(onEvent = coordinator::onEvent)
-            }
-            composable<TemperoDestination.Favorites> {
-                FavoritesRoute(onEvent = coordinator::onEvent)
-            }
-            composable<TemperoDestination.Detail> {
-                DetailRoute(onEvent = coordinator::onEvent)
-            }
+            exploreScreen(onEvent = coordinator::onEvent)
+            searchScreen(onEvent = coordinator::onEvent)
+            favoritesScreen(onEvent = coordinator::onEvent)
+            detailScreen(onEvent = coordinator::onEvent)
         }
     }
 }
 
 private fun NavDestination.isTab(tab: TopLevelDestination): Boolean = when (tab) {
-    TopLevelDestination.Explore -> hasRoute<TemperoDestination.Explore>()
-    TopLevelDestination.Favorites -> hasRoute<TemperoDestination.Favorites>()
+    TopLevelDestination.Explore -> hasRoute<ExploreRoute>()
+    TopLevelDestination.Favorites -> hasRoute<FavoritesRoute>()
 }

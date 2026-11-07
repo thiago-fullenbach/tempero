@@ -13,10 +13,16 @@ import androidx.navigation.compose.rememberNavController
 import br.com.thiago.tempero.core.domain.analytics.AnalyticsEvent
 import br.com.thiago.tempero.core.domain.analytics.AnalyticsTracker
 import br.com.thiago.tempero.core.model.Meal
-import br.com.thiago.tempero.presentation.screen.detail.DetailEvent
-import br.com.thiago.tempero.presentation.screen.explore.ExploreEvent
-import br.com.thiago.tempero.presentation.screen.favorites.FavoritesEvent
-import br.com.thiago.tempero.presentation.screen.search.SearchEvent
+import br.com.thiago.tempero.feature.detail.DetailEvent
+import br.com.thiago.tempero.feature.explore.ExploreEvent
+import br.com.thiago.tempero.feature.favorites.FavoritesEvent
+import br.com.thiago.tempero.feature.search.SearchEvent
+import br.com.thiago.tempero.feature.detail.navigation.DetailRoute
+import br.com.thiago.tempero.feature.detail.navigation.navigateToDetail
+import br.com.thiago.tempero.feature.explore.navigation.ExploreRoute
+import br.com.thiago.tempero.feature.favorites.navigation.FavoritesRoute
+import br.com.thiago.tempero.feature.search.navigation.SearchRoute
+import br.com.thiago.tempero.feature.search.navigation.navigateToSearch
 import timber.log.Timber
 
 /**
@@ -33,7 +39,7 @@ class TemperoCoordinator(
     fun onEvent(event: ExploreEvent) {
         when (event) {
             ExploreEvent.SearchRequested -> runIfResumed {
-                navController.navigate(TemperoDestination.Search) { launchSingleTop = true }
+                navController.navigateToSearch { launchSingleTop = true }
             }
 
             ExploreEvent.FavoritesRequested -> onTabSelected(TopLevelDestination.Favorites)
@@ -55,7 +61,7 @@ class TemperoCoordinator(
 
             // Pede "ir para o Explorar", não "voltar um passo": nunca remove o próprio Explorar.
             SearchEvent.ExploreCategoriesRequested -> runIfResumed {
-                navController.popBackStack(TemperoDestination.Explore, inclusive = false)
+                navController.popBackStack(ExploreRoute, inclusive = false)
             }
 
             is SearchEvent.MealSelected -> openMeal(event.meal, AnalyticsEvent.ORIGIN_SEARCH)
@@ -71,7 +77,7 @@ class TemperoCoordinator(
     /** Troca de aba da barra inferior, guardando e restaurando o estado de cada uma. */
     fun onTabSelected(destination: TopLevelDestination) = runIfResumed {
         navController.navigate(destination.route) {
-            popUpTo(TemperoDestination.Explore) { saveState = true }
+            popUpTo(ExploreRoute) { saveState = true }
             launchSingleTop = true
             restoreState = true
         }
@@ -95,7 +101,7 @@ class TemperoCoordinator(
     /** [origin] é a lista de onde a receita foi aberta; só é registrado se a navegação ocorrer. */
     private fun openMeal(meal: Meal, origin: String) = runIfResumed {
         analytics.track(AnalyticsEvent.SelectItem(meal, origin))
-        navController.navigate(TemperoDestination.Detail(meal.id)) { launchSingleTop = true }
+        navController.navigateToDetail(meal.id) { launchSingleTop = true }
     }
 }
 
@@ -117,9 +123,9 @@ fun rememberTemperoCoordinator(
 
 /** Nome da tela para o `screen_view`; `null` para destinos desconhecidos. */
 private fun NavDestination.analyticsScreen(): String? = when {
-    hasRoute<TemperoDestination.Explore>() -> AnalyticsEvent.SCREEN_EXPLORE
-    hasRoute<TemperoDestination.Search>() -> AnalyticsEvent.SCREEN_SEARCH
-    hasRoute<TemperoDestination.Favorites>() -> AnalyticsEvent.SCREEN_FAVORITES
-    hasRoute<TemperoDestination.Detail>() -> AnalyticsEvent.SCREEN_DETAIL
+    hasRoute<ExploreRoute>() -> AnalyticsEvent.SCREEN_EXPLORE
+    hasRoute<SearchRoute>() -> AnalyticsEvent.SCREEN_SEARCH
+    hasRoute<FavoritesRoute>() -> AnalyticsEvent.SCREEN_FAVORITES
+    hasRoute<DetailRoute>() -> AnalyticsEvent.SCREEN_DETAIL
     else -> null
 }
