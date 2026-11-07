@@ -41,3 +41,11 @@ Clean-architecture layering with Hilt DI, MVI-style presentation:
 TheMealDB has no paginated "list all meals" endpoint, so `ExploreViewModel` loads everything up front: it fetches categories, then `getAllMeals(categories)` calls `filter.php?c=<category>` for every category in parallel, flattens and sorts by name. The full list is held in memory, and paging is done locally by `MealPagingSource` (in `presentation/paging/`), which slices the in-memory list and filters by the selected category. A new `Pager` is created via `flatMapLatest` whenever the meal list or the selected category changes, and `.cachedIn(viewModelScope)`.
 
 Debug builds enable `StrictMode` (thread + VM policies, log penalty) in `TemperoApplication`, and OkHttp logs full bodies only in debug.
+
+## CI
+
+Um único workflow, `.github/workflows/ci.yml` (GitHub Actions, Temurin 17), roda em PRs e pushes para `develop` e `main`: `./gradlew detekt lintDebug testDebugUnitTest assembleDebug`. Fluxo de branches informal (Gitflow): `feat/*` → `develop` → `main`.
+
+- Gradle 8.13 não roda com JDK 25+; localmente use JDK 17/21 (ex.: `JAVA_HOME` apontando para o `jbr-21` do Android Studio).
+- Configs: `config/detekt/detekt.yml`, `.editorconfig`, baselines `app/detekt-baseline.xml` e `app/lint-baseline.xml` (regenerar com `./gradlew detektBaseline` / `./gradlew updateLintBaseline`).
+- `app/build.gradle.kts` já aceita assinatura de release via env vars `TEMPERO_KEYSTORE_PATH`, `TEMPERO_KEYSTORE_PASSWORD`, `TEMPERO_KEY_ALIAS`, `TEMPERO_KEY_PASSWORD` e versão via `-Ptempero.versionName` / `-Ptempero.versionCode`, para um futuro workflow de release (sem elas, `assembleRelease` gera APK não assinado).
